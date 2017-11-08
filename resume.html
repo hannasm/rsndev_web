@@ -3,9 +3,67 @@
     <meta http-equiv="refresh" content="0; url=/#resume" />
   </head>
   <body>
+    <style type="text/css">
+      h1 {
+        margin: .25em 0; /* dont waste so much whitespace */
+      }
+    </style>
     <h3>Rockstar developer will embrace your solution space, solve your problems and improve your codebase. Interests
         include programming language design, language translation and software architecture with a specific focus
         on creating simple, correct, and beautiful code.</h3>
+    <style type="text/css">
+      .contact_info {
+        margin-top: -0.5em; /* not sure why chrome is adding some extra margin to this div, maybe the clear? */
+      }
+      .contact_info  dt {
+        float: left;
+        clear: left;
+        width: 8em;
+        margin-top: 0.5em;
+      }
+      .contact_info dd {
+        float: left;
+        margin-left: 2em;
+        margin-top: 0.5em;
+      }
+      .contact_info dl dt:first-of-type,
+      .contact_info dl dd:first-of-type,
+      .contact_info dl:first-child {
+        margin-top: 0;
+      }
+      .contact_info dl {
+        clear: both;
+          margin-left: 5%;
+      }
+      .contact_info:after {
+        content: '';
+        clear: both;
+        display: table;
+      }
+      .contact_info + h1:before {
+        content: '';
+        clear: both;
+        display: table;
+      }
+    </style>
+    <h1>Contact</h1>
+    <div class="contact_info">
+      <dl>
+        <dt>Name</dt>
+        <dd>Sean Hanna</dd>
+        <dt>Address</dt>
+        <dd><address>4404 Hillside Avenue<br />
+          Cincinnati, OH 45233</address></dd>
+        <dt>Phone</dt>
+        <dd><a href="tel:+15132555383">1 513 255 5383</a></dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:hannasm@gmail.com">hannasm@gmail.com</a></dd>
+        <dt>Web</dt>
+        <dd><a href="https://rsndev.com/resume">http://rsndev.com/resume</a></dd>
+        <dt>Github</dt>
+        <dd><a href="https://github.com/hannasm">https://github.com/hannasm</a></dd>
+      </dl>
+     </div>
 		<style type="text/css">
 			.skills { 
 				display: flex;
