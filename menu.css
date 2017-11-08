@@ -175,3 +175,12 @@ main:target ~ div.menu a#menu_item_home:after {
   max-width: 0px;
   max-height: 0px;
 }
+
+@media print {
+  div.hamburger {
+    display: none;
+  }
+  div.menu {
+    display: none;
+  }
+}
