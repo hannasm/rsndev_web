@@ -7,56 +7,7 @@
       h1 {
         margin: .25em 0; /* dont waste so much whitespace */
       }
-      .cover {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      }
-      .cover .p1 {
-        width: 80%;
-          margin-top: 1em;
-      }
-      .cover .p1 input:after {
-        content: attr(value);
-      }
-      .cover input + span {
-        display: none;
-      }
-      @media print {
-        .cover input {
-          display: none;
-        }
-        .cover input + span {
-          display: inline;
-        }
-        .cover {
-          page-break-after: always;
-        }
-      }
     </style>
-    <script type="text/javscript" language="javascript">
-window.updateResumeCoverletterValue = function (ele) {
-  var id = ele.id;
-  var target = document.getElementById(id + '_value');
-  target.innerText = '' + ele.value;
-};
-    </script>
-    <div class="cover">
-      <div class="p1">
-        Dear <input type="text" value="blah blah blah" id="coverletter_addressee" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_addressee_value">blah blah blah</span>,<br/>
-        Hi my name is Sean Hanna, and i am an experienced software engineer and I am responding to your opening for a <input type="text" value="blah blah blah"  id="coverletter_position" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_position_value">blah blah blah</span>. I would be excited to play a role in your business with my many talents, including <input type="text" value="blah blah blah"  id="coverletter_abilities" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_abilities_value">blah blah blah</span>. I have a successful track record of creating software for large and highly visible clients. I am a self starter, and a driven individual willing to experiment and explore different approaches to solving problems. I respond promptly to coworkers requests, and explain details as needed. I'm energetic and enthusiastic about learning and becoming a better engineer and would like to join a team of like-minded individuals creating meaningful software.
-      </div>
-      <div class="p1">
-        Please contact me with any questions you may have. I look forward to hearing from you soon. 
-      </div>
-      <div class="p1">
-        Regards,<br />
-        &nbsp;&nbsp;&nbsp;Sean Hanna
-      </div>
-         
-    </div>
     <style type="text/css">
       .contact_info {
         margin-top: -0.5em; /* not sure why chrome is adding some extra margin to this div, maybe the clear? */
@@ -243,8 +194,8 @@ window.updateResumeCoverletterValue = function (ele) {
       <div class="skill big dev dotnet">C#</div>
       <div class="skill big dev dotnet">Powershell</div>
       <div class="skill big dev">SQL</div>
-      <div class="skill big dev web">Javasript</div>
-      <div class="skill big dev dotnet">LINQ Developer</div>
+      <div class="skill big dev web">Javascript</div>
+      <div class="skill big dev dotnet">LINQ</div>
       <div class="skill med dev web">HTML</div>
       <div class="skill med dev web">CSS</div>
       <div class="skill med dev">C/C++</div>
@@ -258,6 +209,8 @@ window.updateResumeCoverletterValue = function (ele) {
 			<div class="skill med dev web">AngularJS</div>
 			<div class="skill dev web">ReactJS</div>
 			<div class="skill med dev">Git</div>
+      <div class="skill med dev">Svn</div>
+      <div class="skill med dev">TFS</div>
 			<div class="skill big dev web">Soap</div>
 			<div class="skill dev web">Json</div>
 			<div class="skill dev web">Meteor</div>
