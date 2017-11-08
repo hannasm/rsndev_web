@@ -1,8 +1,218 @@
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, target-densityDpi=device-dpi" />
+    <meta name="description" content="Resonance Development" />
+    <script src="imports.js"></script>
     <title>RSNDEV Test</title>
   </head>
   <body>
-    <div>Welcome to this test website</div>
+		<input type="radio" name="hamburger" class="hamburger" id="hamburger_close" checked="checked"/>
+		<input type="radio" name="hamburger" class="hamburger" id="hamburger_open" />
+		<main class="page" id="homeGym">
+			<div class="pending" data-html="homegym_generated.html"></div>
+			<link rel="prefetch" href="homegym_generated.html" />
+		</main>
+		<main class="page" id="resume">
+			<div class="pending" data-html="resume.html"></div>
+			<link rel="prefetch" href="resume.html" />
+		</main>
+		<main class="page" id="credits">
+			<div class="pending" data-html="credits.html"></div>
+			<link rel="prefetch" href="credits.html" />
+		</main>
+		<main class="page" id="experimentsOne">
+			<div class="pending" data-html="experiments1.html"></div>
+			<link rel="prefetch" href="experiments1.html" />
+		</main>
+		<main class="page" id="experimentsTwo">
+			<div class="pending" data-html="experiments2.html"></div>
+			<link rel="prefetch" href="experiments2.html" />
+		</main>
+		<main class="page" id="home" >
+			<div class="pending" data-html="homepage.html"></div>
+			<link rel="prefetch" href="homepage.html" />
+		</main>
+		<div class="menu no_select" id="main_menu">
+			<div class="hamburger" id="hamburger_button">
+				<label for="hamburger_close" id="on_close_hamburger">
+					<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+						<path d="M0 0v1h8v-1h-8zm0 2.97v1h8v-1h-8zm0 3v1h8v-1h-8z" transform="translate(0 1)" />
+					</svg>
+				</label>
+			</div>
+			<ul>
+				<li><a id="menu_item_home" href="#">Homepage</a></li>
+        <li>
+          <label for="showExperiments" id="show_hide_experiments_menu">Experiments</label>
+          <input type="checkbox" name="showExperiments" id="showExperiments" class="showHideNext" />
+          <ul>
+            <li><a id="menu_item_experimentsOne" href="#experimentsOne">One</a></li>
+            <li><a id="menu_item_experimentsTwo" href="#experimentsTwo">Two</a></li>
+          </ul>
+        </li>
+				<li><a id="menu_item_homeGym" href="#homeGym">Home Gym</a></li>
+        <li><a id="menu_item_resume" href="#resume">Resume</a></li>
+        <li><a id="menu_item_credits" href="#credits">Credits</a></li>
+			</ul>
+		</div>
+		<div class="hamburger" id="hamburger_button">
+			<label for="hamburger_open" id="on_open_hamburger">
+				<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+					<path d="M0 0v1h8v-1h-8zm0 2.97v1h8v-1h-8zm0 3v1h8v-1h-8z" transform="translate(0 1)" />
+				</svg>
+			</label>
+    </div>
+		<div id="heading1"></div>
+		<div id="heading2"></div>
+		<div id="heading3"></div>
+		<div id="right_border1"></div>
+		<div id="right_border2"></div>
+		<div id="right_border3"></div>
+		<script type="text/javascript">
+			(function() {
+				window.addEventListener('hashchange', function(event) {
+					if (document.body.className.valueOf().includes('kf1')) {
+						document.body.className=document.body.className.replace('kf1', 'kf2');
+          } else if (document.body.className.valueOf().includes('kf2')) {
+						document.body.className=document.body.className.replace('kf2', 'kf1');
+					} else {
+						document.body.className += ' kf1';
+					}
+				}, false);
+			})();
+		</script>
+		<script type="text/javascript">
+      if (window.Stickyfill) {
+        Stickyfill.add(document.getElementById('hamburger_button'));
+        Stickyfill.add(document.getElementById('main_menu'));
+      }
+		</script>
+    <script type="text/javascript">
+			
+      (function() {
+				var loadCounter = {};
+				var incrementLoadCount = function (ele) {
+					if (!ele) { return; }
+					if (!loadCounter[ele]) { 
+						loadCounter['count'] = (loadCounter['count'] || 0) + 1;
+						loadCounter[ele] = 1;
+					} else {
+						loadCounter[ele] += 1;
+					}
+
+					if (!document.body.className.valueOf().includes('loading')) {
+						document.body.className += ' loading';
+					}
+				};
+				var decrementLoadCount = function (ele) {
+					if (!ele) { return; }
+					if (!loadCounter[ele]) { return; } 
+	
+					loadCounter[ele] -= 1;
+
+					if (loadCounter[ele] <= 0) {
+						delete loadCounter[ele];
+					}
+					if (!loadCounter[ele]) { 
+						loadCounter['count'] -= 1;
+					}
+
+					if (loadCounter['count'] <= 0) {
+						/* 
+						 * this technically leaks a space on the classname element, but doesnt 
+						 * suffer from issues if loading was the first and only class in the field
+						 */
+						document.body.className = document.body.className.replace('loading', '').replace('kf1', '').replace('kf2','');
+					}
+				};
+        var blazy = new Blazy({
+          selector: 'img,iframe,.pending',
+          container: 'main,.photo-grid',
+          loadWholeContainer: '.photo-grid',
+					onBegin: function (ele) {
+						incrementLoadCount(ele);
+					},
+					success: function (ele) {
+						decrementLoadCount(ele);
+					}, 
+					error: function (ele, msg) {
+						if (ele && ele.attributes && ele.attributes['data-html']) {
+              var url = ele.attributes['data-html'].value;
+              fetch(url).then(function (response) {
+                if (!response.ok) {
+                  throw Error(response.status + "_" + response.statusText);
+                }
+                return response.text();
+              }).then(function (txt) {
+                var pt = ele.parentElement;
+                if (!pt) { return; }
+                pt.removeChild(ele);
+                var newRoot = document.createElement('html');
+                newRoot.innerHTML = txt;
+                var body = newRoot.getElementsByTagName('body');
+                for (var i = 0; i < body.length; i++) {
+                  for (var j = 0; j < body[i].children.length;j++) {
+                    var node = body[i].children[j];
+                    var newNode = null;
+                    if (node.tagName === 'SCRIPT') {
+                      eval(node.innerHTML);
+                    } else {
+                      pt.appendChild(node.cloneNode(true));
+                    }
+                  }
+                }
+                decrementLoadCount(ele);
+                setTimeout(function() { blazy.revalidate(); });
+              }).catch(function (ex) {
+                decrementLoadCount(ele);
+                var errorNode = document.createElement('div');
+                errorNode.className='loadError';
+                errorNode.title = url + ' (' + ex.toString() + ')';
+                ele.parentNode.replaceChild(errorNode, ele);
+              });
+						} else if (ele && ele.attributes && ele.attributes['data-img']) {
+              var newEle = document.createElement('img');
+              newEle.addEventListener('load', function () {
+                ele.parentNode.replaceChild(newEle, ele);
+                decrementLoadCount(ele);
+              });
+              newEle.addEventListener('error', function(e) {
+                decrementLoadCount(ele);
+                var errorNode = document.createElement('div');
+                errorNode.className='loadError';
+                errorNode.title = e.error.toString();
+                ele.parentNode.replaceChild(errorNode, ele);
+              });
+
+              newEle.setAttribute('src', ele.attributes['data-img'].value);
+              if (ele && ele.attributes && ele.attributes['data-alt']) {
+                newEle.setAttribute('alt', ele.attributes['data-alt'].value);
+              }
+            } else {
+              decrementLoadCount(ele);
+            }
+          }
+				});
+				window.blazy = blazy;
+				blazy.revalidate();
+				window.addEventListener('hashchange', function(event) {
+					blazy.revalidate();
+				}, false);
+        var obs = new MutationObserver(function (mutations) {
+            document.querySelectorAll('input[type="radio"]').forEach(function (label) {
+              if (!label.listenForRadio) {
+                label.addEventListener('change', function() {
+                  setTimeout(function() {
+                    blazy.revalidate();
+                  }, 1);
+                });
+                label.listenForRadio=true;
+              }
+            });
+        });
+        obs.observe(document.documentElement, { subtree: true, childList: true });
+      })();
+    </script>
   </body>
 </html>

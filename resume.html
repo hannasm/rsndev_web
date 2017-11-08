@@ -1,0 +1,292 @@
+<html>
+  <body>
+    <h3>Rockstar developer will embrace your solution space, solve your problems and improve your codebase. Interests
+        include programming language design, language translation and software architecture with a specific focus
+        on creating simple, correct, and beautiful code.</h3>
+		<style type="text/css">
+			.skills { 
+				display: flex;
+				flex-flow: row wrap;
+				max-width: 50%;
+			}
+      @media screen and (max-width: 80em) {
+       .skills {
+          max-width: 100%;
+       }
+      }
+			.skills .skill {
+				border-left: 1px solid #000;
+				border-top: 1px solid #000;
+				text-align: center;
+        vertical-align:middle;
+        box-sizing: border-box;
+        height: 2em;
+        line-height: 2em;
+        position: relative;
+        overflow: hidden;
+			}
+			.skills .skill:after {
+        position:absolute;
+        content:'';
+        border-left: 8px solid #FFF;
+        height: 100%;
+        left:0;
+        top:0;
+      }
+      .skills .skill {
+        min-width: 25%;
+        padding-left: 1em;
+        padding-right: 1em;
+      }
+      .skills .skill:before {
+        content:'';
+        display:inline-block;
+        height:100%;
+        vertical-align:middle;
+      }
+      .skills .big {
+        min-width: 40%;
+      }
+      .skills .med {
+        min-width: 30%;
+      }
+      input.skill_filter { display: none; }
+      label.skill_filter.first div {
+        border-left: 1px solid #000;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        -moz-border-bottom-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        -moz-border-top-left-radius: 15px;
+        border-top-left-radius: 15px;
+      }
+      label.skill_filter div {
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        display:inline-block;
+        padding-left: 2em;
+        margin-bottom: 1em;
+        cursor: pointer;
+      }
+      label.skill_filter.last div {
+        border-right: 1px solid #000;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        -moz-border-top-right-radius: 15px;
+        border-top-right-radius: 15px;
+        -moz-border-bottom-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        padding-right: 2em;
+      }
+      input.skill_filter:checked + label div {
+        color: darkorange;
+      }
+      #skillfilter_all:checked ~ .skills .skill {
+        display: inline-block;
+      }
+      #skillfilter_dev:checked ~ .skills .skill {
+        display: none;
+      }
+      #skillfilter_dev:checked ~ .skills .skill.dev {
+        display: inline-block;
+      }
+      #skillfilter_admin:checked ~ .skills .skill {
+        display: none;
+      }
+      #skillfilter_admin:checked ~ .skills .skill.admin {
+        display: inline-block;
+      }
+      #skillfilter_dotnet:checked ~ .skills .skill {
+        display: none;
+      }
+      #skillfilter_dotnet:checked ~ .skills .skill.dotnet {
+        display: inline-block;
+      }
+      #skillfilter_web:checked ~ .skills .skill {
+        display: none;
+      }
+      #skillfilter_web:checked ~ .skills .skill.web {
+        display: inline-block;
+      }
+
+		</style>
+    <h1>Skills</h1>
+    <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_all" checked="checked" />
+    <label class="skill_filter first" for="skillfilter_all"><div class="skill_filter">all</div></label>
+    <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_dev" />
+    <label class="skill_filter" for="skillfilter_dev"><div class="skill_filter">dev</div></label>
+    <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_admin" />
+    <label class="skill_filter" for="skillfilter_admin"><div class="skill_filter">admin</div></label>
+    <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_dotnet" />
+    <label class="skill_filter " for="skillfilter_dotnet"><div class="skill_filter">dotnet</div></label>
+    <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_web" />
+    <label class="skill_filter last" for="skillfilter_web"><div class="skill_filter">web</div></label>
+      
+    <div class="skills" id="resumeSkills">
+      <div class="skill big dev dotnet">C#</div>
+      <div class="skill big dev dotnet">Powershell</div>
+      <div class="skill big dev">SQL</div>
+      <div class="skill big dev web">Javasript</div>
+      <div class="skill med dev web">HTML</div>
+      <div class="skill med dev web">CSS</div>
+      <div class="skill med dev">C/C++</div>
+      <div class="skill med dev dotnet">VB</div>
+      <div class="skill med dev">Java</div>
+      <div class="skill dev">PHP</div>
+			<div class="skill big admin dotnet">Windows</div>
+			<div class="skill big admin dotnet">Linux</div>
+			<div class="skill med admin">AWS</div>
+			<div class="skill med admin">Azure</div>
+			<div class="skill med dev web">AngularJS</div>
+			<div class="skill dev web">ReactJS</div>
+			<div class="skill med dev">Git</div>
+			<div class="skill big dev web">Soap</div>
+			<div class="skill dev web">Json</div>
+			<div class="skill dev web">Meteor</div>
+			<div class="skill med dev dotnet">Android</div>
+			<div class="skill dev dotnet">Windows Phone</div>
+			<div class="skill dev dotnet">Xamarin</div>
+			<div class="skill dev dotnet">Mobile</div>
+    </div>
+		<style type="text/css">
+    .timeline {
+      border-left: 1px solid #000;
+      position: relative;
+      left: 5px;
+    }
+    .timeline:before {
+      margin-bottom: 1em;
+      border-radius: 10px;
+      border: 10px solid #000;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -10px;
+    }
+    .timeline:after {
+      margin-top: 1em;
+      border-radius: 10px;
+      border: 10px solid #000;
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -10px;
+    }
+    @media screen and (max-width: 80em) {
+    }
+    .timeline .event {
+      display: flex;
+      flex-direction:row;
+        flex-wrap:wrap;
+      justify-content: space-around;
+        align-items: center;
+    }
+    .timeline .event .date {
+      order: 1;
+      border-bottom: 2px solid #000;
+      padding: 0 4em 0 1em;
+        font-size: 14pt;
+      flex-grow: 1;
+    }
+    .timeline .event .detail {
+      order: 2;
+      flex-grow: 10;
+    }
+    </style>
+    <h1>Experience</h1>
+    <div class="timeline">
+      <div class="event">
+        <div class="date">October 2010 - present</div>
+        <div class="detail">
+          <h3>Senior Dotnet Developer @ Epsilon</h3>
+          <ul>
+            <li>High performance clustered web services</li>
+            <li>Software component design and development</li>
+            <li>Build automation and infrastrucuture management</li>
+            <li>DSL design and development</li>
+            <li>Front-end ui work for high visibility websites (Amex / Delta)</li>
+            <li>Integration of realtime monitoring and visualization tools</li>
+            <li>C# / ASP.NET / Powershell / VB / Windows / many more technologies</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event">
+        <div class="date">March 2009 - August 2010</div>
+        <div class="detail">
+          <h3>Dotnet Developer @ Standard Register</h3>
+          <ul>
+            <li>Full stack asp.net on multiple b2b services</li>
+            <li>Integration with exstream for personalized web-to-print media</li>
+            <li>C# / .NET / WEB</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event">
+        <div class="date">February 2009 - March 2009</div>
+        <div class="detail">
+          <h3>Programming Competition @ CSA Group LLC</h3>
+          <ul>
+            <li>Fastest FIX over FAST parser submitted</li>
+            <li>Written in C++ and tuned over several weeks</li>
+            <li>Grand prize winner</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event">
+        <div class="date">December 2008</div>
+        <div class="detail">
+          <h3>B.S. Computer Science @ Miami University</h3>
+          <ul>
+            <li>Compiler Theory</li>
+            <li>Math Electives</li>
+            <li>Additional work experience below</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event">
+        <div class="date">May 2006 - August 2006</div>
+        <div class="detail">
+          <h3>Undergraduate Summer Scholars @ Miami University</h3>
+          <ul>
+            <li>Collision Detection Research Grant</li>
+            <li>Implemented algorithms detecting overlap and penetration depth between 2D polygons</li>
+            <li>Deliverables included performance analysis, documentation and source code</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event">
+        <div class="date">May 2003 - August 2003</div>
+        <div class="detail">
+          <h3>Software Tools Intern @ Intelligrated LLC</h3>
+          <ul>
+            <li>Internal tools development for software engineering group</li>
+            <li>Requirements gathering, design, development, and document</li>
+            <li>C# / .NET / Winforms</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event">
+        <div class="date">June 1998 - October 1998</div>
+        <div class="detail">
+          <h3>Visual Fox Pro Developer @ Paradigm Inc</h3>
+          <ul>
+            <li>Tools development in Visual Fox Pro</li>
+            <li>Data sanitization of millions and millions of records</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+		<script type="text/javascript" language="javasript">
+			 (function() {
+				var parent  = document.getElementById('resumeSkills');
+				var colorTable = ['#B39DDB', '#C5CAE9', '#90CAF9', '#B2DFDB'];
+				for (var i = 0; i < parent.children.length; i++) {
+					var child = parent.children[i];
+					if (child.className.includes('skill')) {
+						child.style.backgroundColor = colorTable[getRandomInt(0, colorTable.length)];
+					}
+				}
+			})();
+		</script>
+  </body>
+</htmL>

@@ -1,0 +1,177 @@
+div.hamburger {
+	position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  flex-shrink: 0;
+  flex-basis: auto;
+  z-index: 1000;
+  width: 32px;
+  height: 32px;
+  opacity: 0;
+  cursor: pointer;
+  padding: 4px;
+  padding-right: 0px;
+}
+/*
+div.hamburger:before,
+div.hamburger:after,
+div.menu:before,
+div.menu:after {
+  content: '';
+  display: table;
+}
+*/
+
+div.menu label,
+div.hamburger label {
+	cursor: pointer;
+}
+div.menu {
+	position: -webkit-sticky;
+  position: sticky;
+  align-self: flex-start;
+  flex-shrink: 0;
+  flex-basis: auto;
+  top: 20px;
+  padding-right: 1.5em;
+}
+
+div.menu ul {
+  list-style-type: none;
+  padding-left: 24px;
+}
+
+div.hamburger svg {
+	width: 100%;
+	height: 100%;
+}
+input.showHideNext,
+input.hamburger {
+	display: none;
+}
+input.showHideNext + ul {
+  max-height: 0px;
+  max-width: 0px;
+  padding: 0;
+  overflow: hidden;
+}
+#experimentsTwo:target ~ div.menu input#showExperiments + ul,
+#experimentsOne:target ~ div.menu input#showExperiments + ul,
+input.showHideNext:checked + ul {
+  max-height: 1000px;
+  max-width: 1000px;
+  padding-left: 1em;
+  overflow: visible; /* show selection indicator */
+}
+/*input#hamburger_close ~ div.menu div.hamburger #on_close_hamburger,*/
+input#hamburger_open ~ div.hamburger #on_open_hamburger {
+	display: block;
+}
+input#hamburger_open:checked ~ div.hamburger,
+input#hamburger_open:checked ~ div.hamburger #on_open_hamburger {
+	max-height:0px;
+  max-width:0px;
+  padding:0px;
+  overflow: hidden;
+}
+input#hamburger_close:checked ~ div.menu div.hamburger {
+  visibility: hidden;
+}
+@media (min-width: 48em) {
+  .hamburger {
+		opacity: 0;
+		transition: opacity 0.75s ease-out;
+		/*animation: fadeOut 0.75s ease-in;*/
+  }
+	div.hamburger {
+    max-height:0px;
+    max-width:0px;
+    padding:0px;
+	}
+	div.menu {
+	}
+}
+@media (max-width: 48em) {
+  div.hamburger {
+    opacity: 1;
+		transition: opacity 0.75s ease-in;
+    max-width: 32px;
+    max-height: 32px;
+    padding: 4px;
+    padding-right: 0px;
+  }
+	input#hamburger_open ~ div.menu {
+		max-width: 0px;
+		max-height: 0px;
+    padding:0px;
+    overflow: hidden;
+    padding-right: 1.5em;
+	}
+	input#hamburger_close:checked ~ main:target,
+  body > input#hamburger_close:checked ~ main:last-of-type {
+  }
+  input#hamburger_close:checked ~ div.hamburger {
+    margin-right: 36px;
+    /* this transition leads to a little wierd bounce at the end that we all:
+     * could fix with a better keyframe or timing function */
+    transition: margin-right 0.7s step-end;
+  }
+	input#hamburger_close:checked ~ div.menu {
+    margin-left: -36px;
+		transition: max-width 0.75s ease-out, max-height 0.75s ease-out;
+  }
+	input#hamburger_open:checked ~ div.menu {
+  /* for smooth animation these two values must be tweaked to a size that accomodates the max size of the menu,
+     these values must be greater than or equal to the total consumed space of the menu as well */
+		max-width: 400px; 
+		max-height: 800px;
+    /*********************/
+    overflow: hidden;
+		transition: max-width 0.75s ease-in, max-height 0.75s ease-in;
+	}
+  input#hamburger_open:checked ~ div.menu div.hamburger {
+    top: 0px;
+  }
+}
+main:target ~ div.menu a#menu_item_home,
+.menu a:link,
+.menu a:hover,
+.menu a:visited,
+.menu a:active {
+  color: black;
+  text-decoration: none;
+}
+div.menu li {
+  position: relative;
+}
+div.menu a#menu_item_home,
+#experimentsTwo:target ~ div.menu a#menu_item_experimentsTwo,
+#homeGym:target ~ div.menu a#menu_item_homeGym,
+#credits:target ~ div.menu a#menu_item_credits,
+#resume:target ~ div.menu a#menu_item_resume,
+#experimentsOne:target ~ div.menu a#menu_item_experimentsOne {
+  color: darkorange;
+}
+div.menu a#menu_item_home:after,
+#experimentsTwo:target ~ div.menu a#menu_item_experimentsTwo:after,
+#homeGym:target ~ div.menu a#menu_item_homeGym:after,
+#credits:target ~ div.menu a#menu_item_credits:after,
+#resume:target ~ div.menu a#menu_item_resume:after,
+#experimentsOne:target ~ div.menu a#menu_item_experimentsOne:after {
+  content: ' ';
+  background-image: url('selector.svg');
+  background-size: cover;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  right: -1.5em;
+  bottom: 0px;
+}
+
+main:target ~ div.menu a#menu_item_home:after {
+  content: ' ';
+  background-image: none !important;
+  max-width: 0px;
+  max-height: 0px;
+}

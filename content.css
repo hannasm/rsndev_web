@@ -1,0 +1,162 @@
+.no_select {
+	-webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+   user-select: none; /* Non-prefixed version, currently
+                         supported by Chrome and Opera */
+}
+.clear {
+  clear: both;
+}
+#right_border1 {
+  animation: 1.4s ease-out 0s 1 slideInFromTop;
+  height:95%;
+  width: 16px;
+}
+#right_border2 {
+  animation: 1.2s ease-out 0s 1 slideInFromTop;
+  height:98%;
+  width: 12px;
+}
+#right_border3 {
+  animation: 1s ease-out 0s 1 slideInFromTop;
+  height:100%;
+  width: 8px;
+}
+#right_border1,
+#right_border2,
+#right_border3 {
+  position: fixed;
+  right: 0;
+  top: 0;
+  border-left: 1px solid #000;
+}
+#heading1 {
+  animation: 1s ease-out 0s 1 slideInFromRight;
+  height: 8px;
+  width: 100%;
+}
+#heading2 {
+  animation: 1.2s ease-out 0s 1 slideInFromRight;
+  height: 12px;
+  width: 98%;
+}
+#heading3 {
+  animation: 1.4s ease-out 0s 1 slideInFromRight;
+  height: 16px;
+  width: 95%;
+}
+#heading1,
+#heading2,
+#heading3 {
+  position: absolute;
+  top:0;
+  border-bottom: 1px  solid #000;
+  right: 0;
+}
+#heading_right_edge{
+  position: absolute;
+  top:0;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-left: 1px  solid #000;
+}
+
+main {
+	overflow: hidden;
+  font-family: 'Anonymous Pro', monospace;
+  flex-grow: 1;
+}
+/*
+main:after {
+    clear: both;
+    height: 0;
+    width: 100%;
+    content: '';
+    display: block;
+}
+*/
+main:target ~ main:last-of-type,
+main {
+  max-height:0;
+  max-width:0;
+  padding:0;
+  margin:0;
+}
+body {
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: row-reverse;
+}
+main:target,
+body > main:last-of-type {
+	max-height:10000px;
+  max-width:100%;
+  display:block;
+  padding-top: 40px;
+  padding-left: 16px;
+  margin-top: -24px;
+  margin-right: 17px;
+}
+
+
+/* offset animation on each line a little bit to make it look cooler */
+body.kf1 #heading3 ,
+body.kf2 #heading3,
+body.kf1 #right_border1,
+body.kf2 #right_border1 {
+  animation-delay: 0.4s;
+  animation-duration: 2s;
+}
+body.kf1 #heading2,
+body.kf1 #right_border2,
+body.kf2 #heading2,
+body.kf2 #right_border2 {
+  animation-delay: 0.2s;
+  animation-duration: 2s;
+}
+body.kf1 #heading1,
+body.kf2 #heading1,
+body.kf1 #right_border3,
+body.kf2 #right_border3 {
+  animation-delay: 0;
+  animation-duration: 2s;
+}
+
+/* this hack of changing animation name forces the animation to play even though no changes ocur */
+body.kf1 #heading1,
+body.kf1 #heading2,
+body.kf1 #heading3 {
+  animation-name: slideOutInFromRight;
+}
+body.kf2 #heading1,
+body.kf2 #heading2,
+body.kf2 #heading3 {
+  animation-name: slideOutInFromRight2;
+}
+body.kf1 #right_border1,
+body.kf1 #right_border2,
+body.kf1 #right_border3 {
+  animation-name: slideOutInFromTop;
+}
+body.kf2 #right_border1,
+body.kf2 #right_border2,
+body.kf2 #right_border3 {
+  animation-name: slideOutInFromTop2;
+}
+body.loading #right_border1,
+body.loading #right_border2,
+body.loading #right_border3 {
+  animation-iteration-count: infinite;
+  animation-name: loadingTop !important;
+}
+body.loading #heading1,
+body.loading #heading2,
+body.loading #heading3 {
+  animation-name: loadingRight !important;
+  animation-iteration-count: infinite;
+}
