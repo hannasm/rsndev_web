@@ -10,13 +10,8 @@
 			.skills { 
 				display: flex;
 				flex-flow: row wrap;
-				max-width: 50%;
+				max-width: 100%;
 			}
-      @media screen and (max-width: 80em) {
-       .skills {
-          max-width: 100%;
-       }
-      }
 			.skills .skill {
 				border-left: 1px solid #000;
 				border-top: 1px solid #000;
@@ -112,6 +107,18 @@
         display: inline-block;
       }
 
+      @media print {
+        .skill_filter {
+         display: none;
+        }
+        .skills {
+         max-width: 100%;
+        } 
+        .skills .skill:after,
+        .skills .skill:before {
+          display: none;
+        }
+      }
 		</style>
     <h1>Skills</h1>
     <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_all" checked="checked" />
@@ -130,6 +137,7 @@
       <div class="skill big dev dotnet">Powershell</div>
       <div class="skill big dev">SQL</div>
       <div class="skill big dev web">Javasript</div>
+      <div class="skill big dev dotnet">LINQ Developer</div>
       <div class="skill med dev web">HTML</div>
       <div class="skill med dev web">CSS</div>
       <div class="skill med dev">C/C++</div>
@@ -198,6 +206,20 @@
     .timeline .event .detail {
       order: 2;
       flex-grow: 10;
+    }
+    @media print {
+      .timeline .event .date {
+        flex-grow: 10;
+          width: 100%;
+      }
+      .timeline .event .detail {
+        flex-grow: 10;
+          width: 100%;
+      }
+      .timeline:after,
+      .timeline:before {
+        display: none;
+      }
     }
     </style>
     <h1>Experience</h1>
