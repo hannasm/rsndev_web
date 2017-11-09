@@ -162,7 +162,8 @@
                     var node = body[i].children[j];
                     var newNode = null;
                     if (node.tagName === 'SCRIPT') {
-                      eval(node.innerHTML);
+                      var codeToExecute = new Function(node.innerHTML + "\n" + '//@ sourceURL=' + url + '.script[' + i + ',' + j + '].js');
+                      codeToExecute();
                     } else {
                       pt.appendChild(node.cloneNode(true));
                     }
@@ -220,5 +221,6 @@
         obs.observe(document.documentElement, { subtree: true, childList: true });
       })();
     </script>
+  	<div class="pending" data-html="analytics.html"></div>
   </body>
 </html>

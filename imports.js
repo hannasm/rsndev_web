@@ -29,6 +29,9 @@
   if (!Array.prototype.forEach) {
     _import('polyfill/array_foreach.js');
   }
+  if (!Array.from) {
+    _import('polyfill/array.from.js');
+  }
 	const sfTst = document.createElement('div');
 	if ( !(
         ['', '-webkit-', '-moz-', '-ms-'].some(prefix => {
