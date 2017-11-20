@@ -158,6 +158,12 @@
       #skillfilter_dotnet:checked ~ .skills .skill.dotnet {
         display: inline-block;
       }
+      #skillfilter_database:checked ~ .skills .skill {
+        display: none;
+      }
+      #skillfilter_database:checked ~ .skills .skill.database {
+        display: inline-block;
+      }
       #skillfilter_web:checked ~ .skills .skill {
         display: none;
       }
@@ -187,15 +193,17 @@
     <label class="skill_filter" for="skillfilter_admin"><div class="skill_filter">admin</div></label>
     <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_dotnet" />
     <label class="skill_filter " for="skillfilter_dotnet"><div class="skill_filter">dotnet</div></label>
+    <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_database" />
+    <label class="skill_filter " for="skillfilter_database"><div class="skill_filter">database</div></label>
     <input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_web" />
     <label class="skill_filter last" for="skillfilter_web"><div class="skill_filter">web</div></label>
       
     <div class="skills" id="resumeSkills">
       <div class="skill big dev dotnet">C#</div>
       <div class="skill big dev dotnet">Powershell</div>
-      <div class="skill big dev">SQL</div>
+      <div class="skill big dev database">SQL</div>
       <div class="skill big dev web">Javascript</div>
-      <div class="skill big dev dotnet">LINQ</div>
+      <div class="skill big dev dotnet database">LINQ</div>
       <div class="skill med dev web">HTML</div>
       <div class="skill med dev web">CSS</div>
       <div class="skill med dev">C/C++</div>
@@ -222,6 +230,10 @@
       <div class="skill admin">VPN Security</div>
       <div class="skill admin">DNS</div>
       <div class="skill admin">DHCP</div>
+      <div class="skill database">MS SQL</div>
+      <div class="skill big database">Oracle</div>
+      <div class="skill med database">MySQL</div>
+      <div class="skill med database">Postgres</div>
     </div>
 		<style type="text/css">
     .timeline {
