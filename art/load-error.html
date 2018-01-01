@@ -1,0 +1,144 @@
+            <style type="text/css">
+              @keyframes selector_pulse01 {
+                0% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+                25% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1.5, 1);
+                }
+                50% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1, 1);
+                }
+                75% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1.5, 1);
+                }
+                100% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+              }
+              @keyframes selector_pulse02 {
+                0% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+                25% {
+                  transform-origin: 0% 50%;
+                  transform: scale(3, 1);
+                }
+                50% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+                75% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1, 1);
+                }
+                100% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+              }
+              @keyframes selector_pulse03 {
+                0% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1, 1);
+                }
+                25% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2.5, 1);
+                }
+                50% {
+                  transform-origin: 0% 50%;
+                  transform: scale(4, 1);
+                }
+                75% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2.5, 1);
+                }
+                100% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1, 1);
+                }
+              }
+              @keyframes selector_pulse04 {
+                0% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+                25% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1, 1);
+                }
+                50% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+                75% {
+                  transform-origin: 0% 50%;
+                  transform: scale(3, 1);
+                }
+                100% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+              }
+              @keyframes selector_pulse05 {
+                0% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+                25% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1.5, 1);
+                }
+                50% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1, 1);
+                }
+                75% {
+                  transform-origin: 0% 50%;
+                  transform: scale(1.5, 1);
+                }
+                100% {
+                  transform-origin: 0% 50%;
+                  transform: scale(2, 1);
+                }
+              }
+              #selector #selector_line_1 {
+                animation: selector_pulse01 1s linear infinite;
+              }
+              #selector #selector_line_2 {
+                animation: selector_pulse02 1s linear infinite;
+              }
+              #selector #selector_line_3 {
+                animation: selector_pulse03 1s linear infinite;
+              }
+              #selector #selector_line_4 {
+                animation: selector_pulse04 1s linear infinite;
+              }
+              #selector #selector_line_5 {
+                animation: selector_pulse05 1s linear infinite;
+              }
+    `
+            </style>
+            <div style="width: 100px; height: 100px;overflow:hidden;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" style='width:100%;height:100%;stroke-width:40px;stroke:#000;fill:none;' id="selector" transform="rotate(-270 32 32)">
+						<path d="M0 0c256 256 256 768 0 1024" id='border' stroke="#667" style="stroke-width:15px;">
+						</path>
+						<path d="M163 275h128" id='selector_line_1' stroke="#800000">
+						</path>
+						<path d="M163 734h128" id="selector_line_5" stroke="#800000">
+						</path>
+						<path d="M178 400h128" id="selector_line_2" stroke="#8B0000">
+						</path>
+						<path d="M178 624h128" id="selector_line_4" stroke="#8B0000">
+						</path>
+						<path d="M192 512h128" id="selector_line_3" stroke="#DC143C">
+						</path>
+					</svg>
+            </div>

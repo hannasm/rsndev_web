@@ -16,7 +16,7 @@
   _css('keyframes.css');
   _css('content.css');
   _css('menu.css');
-  _css('blazy.css');
+  _css('demandjs.css');
   _css('flexbox_mason.css');
   _css('photoviewer.css');
 
@@ -45,7 +45,10 @@
     ) {
   		_import('polyfill/stickyfill.min.js');
 		}
-  _import('blazy.js');
+
+  if (!window.WeakMap) {
+    _import('polyfill/weakmap-polyfill.min.js');
+  }
 
 	if (!(typeof setImmediate === 'function')) {
 		_import('polyfill/setAsap.min.js');
@@ -61,6 +64,9 @@
 	if (!window.MutationObserver) { _import('polyfill/mutationobserver.min.js'); }
 
   _import('javascript-debounce.min.js');
-  _import('flexbox_mason.js');
   _import('polyfill/getRandomInt.js');
+
+  _import('https://cdn.rawgit.com/showdownjs/showdown/1.8.4/dist/showdown.min.js');
+  _import('flexbox_mason.js');
+  _import('demandjs.min.js');
 })();

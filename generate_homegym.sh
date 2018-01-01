@@ -19,7 +19,7 @@ do
   let "next=index+1"
 
   echo "<div class='photo'>" >> $OF
-  echo "<label class="photoviewer" for='photoViewer_homeGym_$index'><div class='pending' data-img='$p'></div></label>" >> $OF
+  echo "<label class="photoviewer" for='photoViewer_homeGym_$index'><img src='$p' /></label>" >> $OF
   echo "<input type='radio' name='photoViewer' id='photoViewer_homeGym_close_$index' class='photoViewer' />" >> $OF
   echo "<input type='radio' name='photoViewer' id='photoViewer_homeGym_$index' class='photoViewer' />" >> $OF
   echo "<div class='photoViewer'>" >> $OF
@@ -30,7 +30,7 @@ do
     echo "<label for='photoViewer_homeGym_$next'><div class='next'></div></label>" >> $OF
   fi
   echo "<label for='photoViewer_homeGym_close_$index'><div class='close'></div></label>" >> $OF
-  echo "<div class='pending' data-img='$p'></div>" >> $OF
+  echo "<img src='$p' />" >> $OF
   echo "</div>" >> $OF
   echo "</div>" >> $OF
 

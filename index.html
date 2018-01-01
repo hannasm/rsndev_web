@@ -10,34 +10,32 @@
 		<input type="radio" name="hamburger" class="hamburger" id="hamburger_close" checked="checked"/>
 		<input type="radio" name="hamburger" class="hamburger" id="hamburger_open" />
 		<main class="page" id="homeGym">
-			<div class="pending" data-html="homegym_generated.html"></div>
-			<link rel="prefetch" href="homegym_generated.html" />
+			<link rel="prefetch" href="homegym_generated.html" type="text/html" class="demand" />
 		</main>
 		<main class="page" id="resume">
-			<div class="pending" data-html="resume.html"></div>
-			<link rel="prefetch" href="resume.html" />
+			<link rel="prefetch" href="resume.html" type="text/html" class="demand" />
 		</main>
 		<main class="page" id="resume_cover">
-			<div class="pending" data-html="cover.html"></div>
-			<div class="pending" data-html="resume.html"></div>
-			<link rel="prefetch" href="cover.html" />
-			<link rel="prefetch" href="resume.html" />
+			<link rel="prefetch" href="cover.html" type="text/html" class="demand" />
+			<link rel="prefetch" href="resume.html" type="text/html" class="demand" />
 		</main>
 		<main class="page" id="credits">
-			<div class="pending" data-html="credits.html"></div>
-			<link rel="prefetch" href="credits.html" />
+			<link rel="prefetch" href="credits.html" type="text/html" class="demand" />
+		</main>
+		<main class="page" id="demandjs">
+			<link rel="prefetch" href="https://raw.githubusercontent.com/hannasm/demandjs/master/README.md" type="text/markdown" class="demand" />
+		</main>
+		<main class="page" id="expressivereflection">
+			<link rel="prefetch" href="https://raw.githubusercontent.com/hannasm/expressivereflectiondotnet/master/README.md" type="text/markdown" class="demand" />
 		</main>
 		<main class="page" id="experimentsOne">
-			<div class="pending" data-html="experiments1.html"></div>
-			<link rel="prefetch" href="experiments1.html" />
+			<link rel="prefetch" href="experiments1.html" type="text/html" class="demand" />
 		</main>
 		<main class="page" id="experimentsTwo">
-			<div class="pending" data-html="experiments2.html"></div>
-			<link rel="prefetch" href="experiments2.html" />
+			<link rel="prefetch" href="experiments2.html" type="text/html" class="demand" />
 		</main>
 		<main class="page" id="home" >
-			<div class="pending" data-html="homepage.html"></div>
-			<link rel="prefetch" href="homepage.html" />
+			<link rel="prefetch" href="homepage.html" type="text/html" class="demand" />
 		</main>
 		<div class="menu no_select" id="main_menu">
 			<div class="hamburger" id="hamburger_button">
@@ -51,6 +49,14 @@
 				<li><a id="menu_item_home" href="#">Homepage</a></li>
 				<li><a id="menu_item_homeGym" href="#homeGym">Home Gym</a></li>
         <li><a id="menu_item_resume" href="#resume">Resume</a></li>
+        <li>
+          <label for="showProjects" id="show_hide_projects_menu">Projects</label>
+          <input type="checkbox" name="showProjects" id="showProjects" class="showHideNext" />
+          <ul>
+            <li><a id="menu_item_project_demandjs" href="#demandjs">DemandJS</a></li>
+            <li><a id="menu_item_project_expressivereflection" href="#expressivereflection">ExpressiveReflection</a></li>
+          </ul>
+        </li>
         <li>
           <label for="showExperiments" id="show_hide_experiments_menu">Experiments</label>
           <input type="checkbox" name="showExperiments" id="showExperiments" class="showHideNext" />
@@ -132,95 +138,72 @@
 						document.body.className = document.body.className.replace('loading', '').replace('kf1', '').replace('kf2','');
 					}
 				};
-        var blazy = new Blazy({
-          selector: 'img,iframe,.pending',
-          container: 'main,.photo-grid',
-          loadWholeContainer: '.photo-grid',
-					onBegin: function (ele) {
-						incrementLoadCount(ele);
-					},
-					success: function (ele) {
-						decrementLoadCount(ele);
-					}, 
-					error: function (ele, msg) {
-						if (ele && ele.attributes && ele.attributes['data-html']) {
-              var url = ele.attributes['data-html'].value;
-              fetch(url).then(function (response) {
-                if (!response.ok) {
-                  throw Error(response.status + "_" + response.statusText);
-                }
-                return response.text();
-              }).then(function (txt) {
-                var pt = ele.parentElement;
-                if (!pt) { return; }
-                pt.removeChild(ele);
-                var newRoot = document.createElement('html');
-                newRoot.innerHTML = txt;
-                var body = newRoot.getElementsByTagName('body');
-                for (var i = 0; i < body.length; i++) {
-                  for (var j = 0; j < body[i].children.length;j++) {
-                    var node = body[i].children[j];
-                    var newNode = null;
-                    if (node.tagName === 'SCRIPT') {
-                      var codeToExecute = new Function(node.innerHTML + "\n" + '//@ sourceURL=' + url + '.script[' + i + ',' + j + '].js');
-                      codeToExecute();
-                    } else {
-                      pt.appendChild(node.cloneNode(true));
-                    }
-                  }
-                }
-                decrementLoadCount(ele);
-                setTimeout(function() { blazy.revalidate(); });
-              }).catch(function (ex) {
-                decrementLoadCount(ele);
-                var errorNode = document.createElement('div');
-                errorNode.className='loadError';
-                errorNode.title = url + ' (' + ex.toString() + ')';
-                ele.parentNode.replaceChild(errorNode, ele);
-              });
-						} else if (ele && ele.attributes && ele.attributes['data-img']) {
-              var newEle = document.createElement('img');
-              newEle.addEventListener('load', function () {
-                ele.parentNode.replaceChild(newEle, ele);
-                decrementLoadCount(ele);
-              });
-              newEle.addEventListener('error', function(e) {
-                decrementLoadCount(ele);
-                var errorNode = document.createElement('div');
-                errorNode.className='loadError';
-                errorNode.title = e.error.toString();
-                ele.parentNode.replaceChild(errorNode, ele);
-              });
+        var showdownConverter = new showdown.Converter();
+        showdownConverter.setFlavor('github');
 
-              newEle.setAttribute('src', ele.attributes['data-img'].value);
-              if (ele && ele.attributes && ele.attributes['data-alt']) {
-                newEle.setAttribute('alt', ele.attributes['data-alt'].value);
-              }
+        var mdRewriteUrl = function(baseUri, oldUrl, path) {
+            var oldBase = baseUri.substring(0, baseUri.lastIndexOf('/'));
+            if (oldUrl.indexOf(oldBase) === 0)  {
+              // this is a relative url but the baseUri was automatically prepended by the browser
+              return path + oldUrl.substring(oldBase.length);
+            } else if (!(/^(http|https)/).test(oldUrl.toLowerCase())) {
+              // this is a relative url and the baseUri was not present
+              return path  + '/' + oldUrl;
             } else {
-              decrementLoadCount(ele);
+              // base case: this is already an absolute path
+              return oldUrl;
+            }
+        }
+        var mdRelativePaths = function(target, path) {
+          if (target.src) {
+            target.src = mdRewriteUrl(target.baseURI, target.src, path);
+          } else if (target.href) {
+            target.href = mdRewriteUrl(target.baseURI, target.href, path);
+          }
+
+          if (target.children) {
+            for (var i = 0; i < target.children.length; i++) {
+              mdRelativePaths(target.children[i], path);
             }
           }
-				});
-				window.blazy = blazy;
-				blazy.revalidate();
-				window.addEventListener('hashchange', function(event) {
-					blazy.revalidate();
-				}, false);
-        var obs = new MutationObserver(function (mutations) {
-            document.querySelectorAll('input[type="radio"]').forEach(function (label) {
-              if (!label.listenForRadio) {
-                label.addEventListener('change', function() {
-                  setTimeout(function() {
-                    blazy.revalidate();
-                  }, 1);
-                });
-                label.listenForRadio=true;
+        }
+
+        var djsOptions = {
+          loadingHtml: '<div class="pending"></div>',
+          linkHandler: {
+            'text/markdown': function(t,c) {
+              var href = t.href;
+              var path = href.substring(0, href.lastIndexOf('/'));
+              var html = showdownConverter.makeHtml(c);
+              var content = document.createElement('div');
+              content.innerHTML = html;
+              while (content.children.length > 0) {
+                // cleanup any relative paths in the markdown to point to the right spot...
+                mdRelativePaths(content.children[0], path);
+
+                t.parentNode.insertBefore(content.children[0], t);
               }
-            });
-        });
-        obs.observe(document.documentElement, { subtree: true, childList: true });
+            }
+          },
+          onLoadBegin: function(t) {
+            incrementLoadCount(t);
+            this.onLoadBegin(t);
+          },
+          onLoadComplete: function(t) {
+            decrementLoadCount(t);
+            this.onLoadComplete(t);
+          },
+          onLoadFailure: function(t,ex) {
+            var errorNode = document.createElement('div');
+            errorNode.className='loadError';
+            var url = t.src || t.href || 'unknown';
+            errorNode.title = url + ' (' + ex.message + ')';
+            t.parentNode.replaceChild(errorNode, t);
+          }
+        };
+        window.DemandJSDemanded = new DemandJS(djsOptions);
       })();
     </script>
-  	<div class="pending" data-html="analytics.html"></div>
+    <link rel="prefetch" href="analytics.html" type="text/html" class="demand" />
   </body>
 </html>
