@@ -59,6 +59,13 @@
   	_import('polyfill/promise.min.js');
 	}
 
+	if (!('IntersectionObserver' in window) || 
+			!('IntersectionObserverEntry' in window) ||
+			!('intersectionRatio' in window.IntersectionObserverEntry.prototype) || 
+			!('isIntersecting' in window.IntersectionObserverEntry.prototype)) {
+			_import('polyfill/intersection-observer.js');
+	}
+
 	if (!window.fetch) { _import('polyfill/fetch.js'); }
 
 	if (!window.MutationObserver) { _import('polyfill/mutationobserver.min.js'); }
