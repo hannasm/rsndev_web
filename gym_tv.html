@@ -1,0 +1,56 @@
+<html>
+  <body>
+    <video style="width:100%" id="gymTvPlayer" src="https://s3.wasabisys.com/exercise-tape/20190909.192728.ringmuscleup.rep.firstever.mp4" autoplay autobuffer controls>
+    </video>
+    <script>
+      var gymTvVideoList = ['https://s3.wasabisys.com/exercise-tape/20190909.192728.ringmuscleup.rep.firstever.mp4'];
+      var getGymTvPlayer = function() {
+          var gymTvPlayer = document.getElementById('gymTvPlayer');
+          return gymTvPlayer;
+      }
+      var gymTvEndHandler = function() {
+        var gymTvPlayer = getGymTvPlayer();
+        gymTvPlayer.src = '';
+        nextVideo = gymTvVideoList[Math.floor(Math.random() * gymTvVideoList.length)];
+
+        setTimeout(function() {
+          gymTvPlayer.src = nextVideo;
+        }, 0);
+      }
+      var setGymTvEndHandler = function() {
+        var gymTvPlayer = getGymTvPlayer();
+        if (gymTvPlayer === null) {
+          setTimeout(setGymTvEndHandler, 0);
+        } else {
+          gymTvPlayer.onended = gymTvEndHandler;
+        }
+      }
+
+      setGymTvEndHandler();
+ 
+      var gymTvRetryCount = 0;
+      var loadGymTvVideoList = function() {
+        fetch('https://s3.wasabisys.com/exercise-tape/index.json').then(
+          function (response) {
+            if (!response.ok) {
+              var delay = 1000 + 1000 * Math.Pow(2, gymTvRetryCount);
+              if (delay > 60000) { delay = 60000; }
+ 
+              console.log('Loading video list for gymTV failed, sleeping ' + delay + 'ms and trying again later');
+              setTimeout(loadGymTvVideoList, delay);
+            } else {
+              return response.json();
+            }
+          }
+        ).then(function (json) {
+          json.forEach(function (part, index, arr) {
+            arr[index] = 'https://s3.wasabisys.com/exercise-tape/' + part;
+          });
+          gymTvVideoList = json;
+        });
+      };
+
+      loadGymTvVideoList();
+    </script>
+  </body>
+</html>
