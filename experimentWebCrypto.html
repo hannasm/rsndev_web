@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <script>
+      function getFileBytes(divId, file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById(divId).innerText = e.target.result;
+        }
+        reader.readAsText(file);
+      }
+      function convertPemToBinary(pem) {
+        var lines = pem.split('\n');
+        var encoded = '';
+        for(var i = 0;i < lines.length;i++){
+          if (lines[i].trim().length > 0 &&
+              lines[i].indexOf('-BEGIN RSA PRIVATE KEY-') < 0 &&
+              lines[i].indexOf('-BEGIN RSA PUBLIC KEY-') < 0 &&
+              lines[i].indexOf('-BEGIN PUBLIC KEY-') < 0 &&
+              lines[i].indexOf('-BEGIN PRIVATE KEY-') < 0 &&
+              lines[i].indexOf('-BEGIN CERTIFICATE-') < 0 &&
+              lines[i].indexOf('-END CERTIFICATE-') < 0 &&
+              lines[i].indexOf('-END PRIVATE KEY-') < 0 &&
+              lines[i].indexOf('-END PUBLIC KEY-') < 0 &&
+              lines[i].indexOf('-END RSA PRIVATE KEY-') < 0 &&
+              lines[i].indexOf('-END RSA PUBLIC KEY-') < 0) {
+            encoded += lines[i].trim();
+          }
+        }
+        return base64StringToArrayBuffer(encoded);
+      }
+      function arrayBufferToBase64String(arrayBuffer) {
+        var byteArray = new Uint8Array(arrayBuffer)
+        var byteString = '';
+        for (var i=0; i<byteArray.byteLength; i++) {
+          byteString += String.fromCharCode(byteArray[i]);
+        }
+        return btoa(byteString);
+      }
+			function base64StringToArrayBuffer(b64str) {
+				var byteStr = atob(b64str);
+				var bytes = new Uint8Array(byteStr.length);
+				for (var i = 0; i < byteStr.length; i++) {
+					bytes[i] = byteStr.charCodeAt(i);
+				}
+				return bytes.buffer;
+			}
+      function textToArrayBuffer(str) {
+        var buf = unescape(encodeURIComponent(str)); // 2 bytes for each char
+        var bufView = new Uint8Array(buf.length);
+        for (var i=0; i < buf.length; i++) {
+          bufView[i] = buf.charCodeAt(i);
+        }
+        return bufView;
+      }
+      function arrayBufferToText(arrayBuffer) {
+        // TODO: This code is adhoc
+        var buf = new Uint8Array(arrayBuffer);
+        return String.fromCharCode.apply(null, buf);
+      }
+      function encryptElement(publicKeyId, idToRead, idToWrite) {
+        var content = document.getElementById(idToRead).value;
+        var crypto = window.crypto || window.msCrypto;
+        var encryptAlgorithm = {
+          name: "RSA-OAEP",
+          hash: {
+            name: "SHA-1"
+          }
+        };
+        var publicKeyContent = document.getElementById(publicKeyId).innerText;
+        crypto.subtle.importKey('spki', convertPemToBinary(publicKeyContent), encryptAlgorithm, false, ['encrypt']).
+          then(function (publicKey) {
+            crypto.subtle.encrypt(encryptAlgorithm, publicKey, textToArrayBuffer(content)).
+              then(function (encryptedData) {
+                document.getElementById(idToWrite).innerText = arrayBufferToBase64String(encryptedData);
+              });
+          }).catch(function (error) {
+            console.log('error in import public key');
+          });
+      }
+      function decryptElement(privateKeyId, idToRead, idToWrite) {
+        var content = document.getElementById(idToRead).innerText;
+        content = base64StringToArrayBuffer(content);
+
+        var crypto = window.crypto || window.msCrypto;
+        var decryptAlgorithm = {
+          name: "RSA-OAEP",
+          hash: {
+            name: "SHA-1"
+          }
+        };
+
+        var privateKeyContent = document.getElementById(privateKeyId).innerText;
+        privateKeyContent = convertPemToBinary(privateKeyContent);
+        crypto.subtle.importKey('pkcs8', privateKeyContent, decryptAlgorithm, false, ['decrypt']).
+          then(function (privateKey) {
+            crypto.subtle.decrypt(decryptAlgorithm, privateKey, content).
+              then(function (encryptedData) {
+                document.getElementById(idToWrite).innerText = arrayBufferToText(encryptedData);
+              }).catch(function (error) {
+                  console.log('error in decrypt data');
+              });
+          }).catch(function (error) {
+            console.log('error in import private key');
+          });
+
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Perform RSA encryption / decryption using WebCrypto on files uploaded by user.</h1>
+    <div>
+        To generate public / private key pair for the purposes of this application you may use the following commnads with openssl:
+
+        <code style="display:block;white-space:pre-wrap;">
+            openssl genrsa -out test.pem 4096 
+            openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in test.pem -out test.pkcs8
+            openssl rsa  -in test.pem -pubout -out test.pem.pub
+        </code>
+     <div>
+     <div>
+        The most important take-aways were to extract the public key from the private key, and convert the private key to pkcs8 format.
+      </div>
+      <div>You must upload test.pem.pub as the public cert, and test.pkcs8 as the private cert file below (or use your own filenames if you wish)</div>
+      <div>
+      <label for="publicCert">Public Cert: </label>
+      <input type="file" id="publicCert" onchange="getFileBytes('publicCertText', this.files[0])" value="Public Cert">
+    </div>
+    <div>
+      <label for="privateCert">Private Cert: </label>
+      <input type="file" id="privateCert" onchange="getFileBytes('privateCertText', this.files[0])" value="Private Cert">
+    </div>
+    <div id="publicCertText">
+    </div>
+    <div id="privateCertText">
+    </div>
+    <div>
+      <label for="contentToEncrypt">Enter Data To Encrypt:</label>
+      <textarea id="contentToEncrypt"></textarea>
+    </div>
+    <input type="button" onclick="encryptElement('publicCertText', 'contentToEncrypt', 'encryptedContent')" value="Encrypt Content" />
+    <div>Encrypted Output:</div>
+    <div id="encryptedContent">
+    </div>
+    <input type="button" onclick="decryptElement('privateCertText', 'encryptedContent', 'decryptedContent')" value="Decrypt Content" />
+    <div>Decrypted Output:</div>
+    <div id="decryptedContent">
+    </div>
+  </body>
+</html>
