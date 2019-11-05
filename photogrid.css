@@ -1,17 +1,36 @@
+/* from masonflex.css */
 .photo-grid {
-  display: flex;
-  flex-flow: column wrap;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	-webkit-flex-flow: column wrap;
+	-moz-flex-flow: column wrap;
+	-ms-flex-flow: column wrap;
+	flex-flow: column wrap;
+}
+.photo-grid {
   width: 100%;
   width: calc(100% + 8px);
 }
+/* from masonflex.css */
 .photo-grid .photo {
   height: auto;
+  position: relative;
+	-webkit-box-ordinal-group: 1;  
+  -moz-box-ordinal-group: 1;     
+	-ms-flex-order: 1;     
+	-webkit-order: 1;  
+  order: 1;
+
+}
+.photo-grid .photo {
   -webkit-box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.5);
   -moz-box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.5);
   box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.5);
   margin-bottom: 8px;
   margin-right: 8px;
-  position: relative;
 }
 .photo-grid .photo label {
   cursor: pointer;

@@ -126,16 +126,9 @@
 <script type="text/javascript" language="javasript">
   var target = document.getElementById('homeGymPhotoGrid01');
    (function() {
-     var mason = new Masonry(
-        target,
-        {
-           panelClass: 'photo',
-           visEle: target.parentNode
-        }
-    );
-    mason.listenResize();
-    mason.listenNewImageLoad();
-    mason.listenHashChange();
+     var mason = new MasonFlex(target, {
+       panelClass: 'photo'
+     });
   })();
 </script>
   </body></html>

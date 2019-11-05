@@ -17,7 +17,7 @@
   _css('content.css');
   _css('menu.css');
   _css('demandjs.css');
-  _css('flexbox_mason.css');
+  _css('photogrid.css');
   _css('photoviewer.css');
 
   // TODO: decide on way to skip this import when es5 supported...?
@@ -74,6 +74,6 @@
   _import('polyfill/getRandomInt.js');
 
   _import('https://cdn.rawgit.com/showdownjs/showdown/1.8.4/dist/showdown.min.js');
-  _import('flexbox_mason.js');
+  _import('masonflex.min.js');
   _import('demandjs.min.js');
 })();
