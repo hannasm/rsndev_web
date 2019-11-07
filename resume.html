@@ -58,51 +58,74 @@
         <dd><a href="https://github.com/hannasm">https://github.com/hannasm</a></dd>
       </dl>
      </div>
-    <h3>Efficient and pragmatic developer available for roles in software development space. Interests
-        include programming language design, language translation and software architecture with a specific focus
+    <h3>Efficient and pragmatic technologist available for roles in software development. Interests
+        include internet technologies, machine translation and software architecture with a specific focus
         on creating simple, correct, and beautiful code.</h3>
 		<style type="text/css">
+			.masonflex-panel, .masonflex-pad {
+				/*width: 20% !important;*/
+			}
 			.skills { 
 				display: flex;
 				flex-flow: row wrap;
-				max-width: 100%;
+				max-width: 675px;
+				display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+				display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+				display: -ms-flexbox;      /* TWEENER - IE 10 */
+				display: -webkit-flex;     /* NEW - Chrome */
+				display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+				-webkit-flex-flow: column wrap;
+				-moz-flex-flow: column wrap;
+				-ms-flex-flow: column wrap;
+				flex-flow: column wrap;
+				align-items:center;
+				justify-content:center;
 			}
 			.skills .skill {
-				border-left: 1px solid #000;
-				border-top: 1px solid #000;
+				position: relative;
+				-webkit-box-ordinal-group: 1;
+				-moz-box-ordinal-group: 1;
+				-ms-flex-order: 1;
+				-webkit-order: 1;
+				order: 1;
+			}
+			.skills .skill {
+        border-radius: 50%;
+				border: 2px solid #CCC;
 				text-align: center;
         vertical-align:middle;
         box-sizing: border-box;
-        height: 2em;
         line-height: 2em;
         position: relative;
         overflow: hidden;
 			}
-			.skills .skill:after {
-        position:absolute;
-        content:'';
-        border-left: 8px solid #FFF;
-        height: 100%;
-        left:0;
-        top:0;
-      }
       .skills .skill {
-        min-width: 25%;
+        width: 135px;
+        padding-top: 45px; 
         padding-left: 1em;
         padding-right: 1em;
-      }
-      .skills .skill:before {
-        content:'';
-        display:inline-block;
-        height:100%;
-        vertical-align:middle;
+        position: relative;
       }
       .skills .big {
-        min-width: 40%;
+        padding-top: 105px; 
       }
       .skills .med {
-        min-width: 30%;
+        padding-top: 75px; 
       }
+      .skill .skilldesc {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+      }
+
       input.skill_filter { display: none; }
       label.skill_filter.first div {
         border-left: 1px solid #000;
@@ -172,13 +195,6 @@
         .skill_filter {
          display: none;
         }
-        .skills {
-         max-width: 100%;
-        } 
-        .skills .skill:after,
-        .skills .skill:before {
-          display: none;
-        }
       }
 		</style>
     <h1>Skills</h1>
@@ -196,40 +212,46 @@
     <label class="skill_filter last" for="skillfilter_web"><div class="skill_filter">web</div></label>
       
     <div class="skills" id="resumeSkills">
-      <div class="skill big dev dotnet">C#</div>
-      <div class="skill big dev dotnet">Powershell</div>
-      <div class="skill big dev database">SQL</div>
-      <div class="skill big dev web">Javascript</div>
-      <div class="skill big dev dotnet database">LINQ</div>
-      <div class="skill med dev web">HTML</div>
-      <div class="skill med dev web dotnet">Dotnet Core</div>
-      <div class="skill med dev web">CSS</div>
-      <div class="skill med dev">C/C++</div>
-      <div class="skill med dev dotnet">VB</div>
-      <div class="skill med dev">Java</div>
-      <div class="skill dev">PHP</div>
-			<div class="skill big admin dotnet">Windows</div>
-			<div class="skill big admin dotnet">Linux</div>
-			<div class="skill med admin">AWS</div>
-			<div class="skill med admin">Azure</div>
-			<div class="skill med dev web">AngularJS</div>
-			<div class="skill med dev">Git</div>
-      <div class="skill med dev">Svn</div>
-      <div class="skill med dev">TFS</div>
-			<div class="skill big dev web">Soap</div>
-			<div class="skill dev web">Json</div>
-			<div class="skill med dev dotnet">Android</div>
-			<div class="skill dev dotnet">Windows Phone</div>
-			<div class="skill dev dotnet">Xamarin</div>
-			<div class="skill dev dotnet">Mobile</div>
-      <div class="skill admin">VLANs</div>
-      <div class="skill admin">VPN Security</div>
-      <div class="skill admin">DNS</div>
-      <div class="skill admin">DHCP</div>
-      <div class="skill database">MS SQL</div>
-      <div class="skill big database">Oracle</div>
-      <div class="skill med database">MySQL</div>
-      <div class="skill med database">Postgres</div>
+      <div class="skill big dev dotnet"><div class="skilldesc">C#</div></div>
+      <div class="skill big dev dotnet"><div class="skilldesc">Powershell</div></div>
+      <div class="skill big dev database"><div class="skilldesc">SQL</div></div>
+      <div class="skill big dev web"><div class="skilldesc">Javascript</div></div>
+      <div class="skill big dev dotnet database"><div class="skilldesc">LINQ</div></div>
+      <div class="skill med dev web"><div class="skilldesc">HTML</div></div>
+      <div class="skill med dev web dotnet"><div class="skilldesc">Dotnet Core</div></div>
+      <div class="skill dev web dotnet"><div class="skilldesc">REST</div></div>
+      <div class="skill med dev web dotnet"><div class="skilldesc">ASP.NET</div></div>
+      <div class="skill med dev web"><div class="skilldesc">CSS</div></div>
+      <div class="skill med dev"><div class="skilldesc">C/C++</div></div>
+      <div class="skill med dev dotnet"><div class="skilldesc">VB</div></div>
+      <div class="skill med dev"><div class="skilldesc">Java</div></div>
+      <div class="skill dev"><div class="skilldesc">PHP</div></div>
+			<div class="skill big admin dotnet"><div class="skilldesc">Windows</div></div>
+			<div class="skill big admin dotnet"><div class="skilldesc">Linux</div></div>
+			<div class="skill admin"><div class="skilldesc">AWS</div></div>
+			<div class="skill admin"><div class="skilldesc">Azure</div></div>
+			<div class="skill med dev web"><div class="skilldesc">AngularJS</div></div>
+			<div class="skill med dev"><div class="skilldesc">Git</div></div>
+      <div class="skill med dev"><div class="skilldesc">Svn</div></div>
+      <div class="skill med dev"><div class="skilldesc">TFS</div></div>
+			<div class="skill big dev web"><div class="skilldesc">Soap</div></div>
+			<div class="skill dev web"><div class="skilldesc">Json</div></div>
+			<div class="skill med dev dotnet"><div class="skilldesc">Android</div></div>
+			<div class="skill dev dotnet"><div class="skilldesc">Windows Phone</div></div>
+			<div class="skill dev dotnet"><div class="skilldesc">Xamarin</div></div>
+			<div class="skill dev dotnet"><div class="skilldesc">Mobile</div></div>
+      <div class="skill admin"><div class="skilldesc">VLANs</div></div>
+      <div class="skill admin"><div class="skilldesc">VPN Security</div></div>
+      <div class="skill admin"><div class="skilldesc">DNS</div></div>
+      <div class="skill admin"><div class="skilldesc">DHCP</div></div>
+      <div class="skill database"><div class="skilldesc">MS SQL</div></div>
+      <div class="skill big database"><div class="skilldesc">Oracle</div></div>
+      <div class="skill med database"><div class="skilldesc">MySQL</div></div>
+      <div class="skill med database"><div class="skilldesc">Postgres</div></div>
+      <div class="skill dev web"><div class="skilldesc">Web Crypto</div></div>
+      <div class="skill med dev web"><div class="skilldesc">Mutation Observer</div></div>
+      <div class="skill med dev web"><div class="skilldesc">Intersection Observer</div></div>
+      <div class="skill dev web"><div class="skilldesc">Responsive Design</div></div>
     </div>
 		<style type="text/css">
     .timeline {
@@ -238,7 +260,7 @@
       left: 5px;
     }
     .timeline:before {
-      margin-bottom: 1em;
+      margin-bottom: 3em;
       border-radius: 10px;
       border: 10px solid #000;
       content: '';
@@ -247,7 +269,6 @@
       left: -10px;
     }
     .timeline:after {
-      margin-top: 1em;
       border-radius: 10px;
       border: 10px solid #000;
       content: '';
@@ -255,7 +276,18 @@
       bottom: 0;
       left: -10px;
     }
-    @media screen and (max-width: 80em) {
+    .timeline .event:first-child {
+      padding-top: 2em;
+    }
+    .timeline .event:last-child {
+      padding-bottom: 2em;
+    }
+    @media screen and (max-width: 800px) {
+      /* min-width: 15 (default) causes some issues with overflow on small screens
+         which with min-width: 1 just causes word wrapping to happen instead */ 
+      .timeline .event div.date {
+        min-width: 1em;
+      }
     }
     .timeline .event {
       display: flex;
@@ -267,29 +299,65 @@
     .timeline .event .date {
       order: 1;
       border-bottom: 2px solid #000;
-      padding: 0 4em 0 1em;
+      padding: 0.5em 4em 0 1em;
         font-size: 14pt;
       flex-grow: 1;
+      min-width: 15em;
     }
     .timeline .event .detail {
       order: 2;
       flex-grow: 10;
     }
+    .timeline .event .detail h3 {
+      margin-left: 0.75em;
+    }
+		.page-break {
+			display:none;
+		}
     @media print {
+      .timeline .event {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        page-break-after: auto;
+        break-after: auto;
+        padding-top: 1.5em;
+      }
       .timeline .event .date {
+        oprhans: 2;
+          widows: 2;
         flex-grow: 10;
-          width: 100%;
+        width: 100%;
+        break-after: avoid;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        /* padding-top: 30px; */
+          display: table;
+      }
+      .timeline:before,
+      .timeline:after {
+        display: none;
       }
       .timeline .event .detail {
         flex-grow: 10;
           width: 100%;
+        page-break-before: avoid;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
       }
-      .timeline:after,
-      .timeline:before {
-        display: none;
+			.page-break {
+        display: block;
+        page-break-after: always;
+        clear: both;
+        break-after: always;
       }
+      /* this padding addresses a bug in chrome that puts the page break in the middle of the heading text */
+      h1 { padding-top: 20px; }
     }
+		
     </style>
+		<div class="page-break"></div>
     <h1>Experience</h1>
     <div class="timeline">
       <div class="event">
@@ -298,12 +366,27 @@
           <h3>Senior Dotnet Developer @ Epsilon</h3>
           <ul>
             <li>High performance clustered web services</li>
-            <li>Software component design and development</li>
             <li>Build automation and infrastrucuture management</li>
+            <li>Business rules engine expert resource</li>
+            <li>Software component design and development</li>
             <li>DSL design and development</li>
-            <li>Front-end ui work for high visibility websites (Amex / Delta)</li>
-            <li>Integration of realtime monitoring and visualization tools</li>
-            <li>C# / ASP.NET / Powershell / VB / Windows / many more technologies</li>
+            <li>Front-end ui for high visibility websites</li>
+            <li>Integration with realtime monitoring and visualization tools</li>
+            <li>Implement proprietary encryption schemes and network protocols</li>
+            <li>C# / Powershell / Windows Server / Oracle / and any technologies needed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="event">
+        <div class="date">2015 - present</div>
+        <div class="detail">
+          <h3>Github Side Projects</h3>
+          <ul>
+            <li>More production quality code published on github than most would care to look at</li>
+            <li><a href="https://github.com/hannasm/demandjs">https://github.com/hannasm/demandjs</a> - advanced web content lazy loader</li>
+            <li><a href="https://github.com/hannasm/FloodgateDotNet">https://github.com/hannasm/FloodgateDotNet</a> - high perf event throttling</li>
+            <li><a href="https://github.com/hannasm/masonflexjs">https://github.com/hannasm/masonflexjs</a> - high perf masonry layouts for web</li>
+            <li><a href="https://rsndev.com#resume">https://rsndev.com#resume</a> - this resume is published to and printed from the web</li>
           </ul>
         </div>
       </div>
@@ -312,7 +395,7 @@
         <div class="detail">
           <h3>Dotnet Developer @ Standard Register</h3>
           <ul>
-            <li>Full stack asp.net on multiple b2b services</li>
+            <li>Full stack ASP.NET for collection of b2b services</li>
             <li>Integration with exstream for personalized web-to-print media</li>
             <li>C# / .NET / WEB</li>
           </ul>
@@ -323,9 +406,9 @@
         <div class="detail">
           <h3>Programming Competition @ CSA Group LLC</h3>
           <ul>
-            <li>Fastest FIX over FAST parser submitted</li>
-            <li>Written in C++ and tuned over several weeks</li>
-            <li>Grand prize winner</li>
+            <li>$5,000 grand prize winner</li>
+            <li>High performance FIX over FAST parser</li>
+            <li>C++, XML parser</li>
           </ul>
         </div>
       </div>
@@ -336,7 +419,6 @@
           <ul>
             <li>Compiler Theory</li>
             <li>Math Electives</li>
-            <li>Additional work experience below</li>
           </ul>
         </div>
       </div>
@@ -357,7 +439,7 @@
           <h3>Software Tools Intern @ Intelligrated LLC</h3>
           <ul>
             <li>Internal tools development for software engineering group</li>
-            <li>Requirements gathering, design, development, and document</li>
+            <li>Full waterfall process experience, requirements, design, development, and documentation</li>
             <li>C# / .NET / Winforms</li>
           </ul>
         </div>
@@ -368,7 +450,7 @@
           <h3>Visual Fox Pro Developer @ Paradigm Inc</h3>
           <ul>
             <li>Tools development in Visual Fox Pro</li>
-            <li>Data sanitization of millions and millions of records</li>
+            <li>Automated data sanitization of millions of records</li>
           </ul>
         </div>
       </div>
@@ -382,6 +464,15 @@
 					if (child.className.includes('skill')) {
 						child.style.backgroundColor = colorTable[getRandomInt(0, colorTable.length)];
 					}
+				}
+				var mason = new MasonFlex(parent, {
+					//columnCount: 4
+				});
+				var filters = document.querySelectorAll('.skill_filter');
+				for (var i = 0; i < filters.length; i++) {
+					filters[i].addEventListener('change', function() {
+						mason.layout();
+					});
 				}
 			})();
 		</script>
