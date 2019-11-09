@@ -1,0 +1,278 @@
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/#resume" />
+  </head>
+  <body>
+    <style type="text/css" class="resume_colors">
+    </style>
+    <style type="text/css">
+      .resume_config {
+        display:  none;
+      }
+      @media print {
+        form.resume_config {
+          display: none;
+        }
+        div.resume_config_footer {
+          display: none;
+        }
+      }
+    </style>
+    <form class="resume_config pure-form pure-form-stacked">
+      <fieldset>
+        <label>
+          <input type="checkbox" name="prismaticBorders" value="prismaticBorders" />
+          Prismatic Borders
+        </label>
+        <label>
+          <input type="checkbox" name="skillBorderColors" value="skillBorderColors" checked />
+          Skill Border Colors
+        </label>
+        <label>
+          <input type="checkbox" name="timelineBorderColors" value="timelineBorderColors" />
+          Timeline Border Colors
+        </label>
+        <label>
+          <input type="checkbox" name="colorH1" value="colorH1" checked />
+          Color H1's
+        </label>
+        <label>
+          <input type="checkbox" name="colorH2" value="colorH2" />
+          Color H2's
+        </label>
+        <label>
+          <input type="checkbox" name="colorH3" value="colorH3" checked />
+          Color H3's
+        </label>
+        <label>
+          Foreground Colors
+          <input type="textbox" name="fgColors" value="#000" />
+        </label>
+        <label>
+          Background Colors
+          <input type="textbox" name="bgColors" value="#B39DDB, #C5CAE9, #90CAF9, #B2DFDB, #E2F1AF, #CFFCFF, #F2DFD7, #EFD3D7, #EDEEC9, #D1FAFF, #BCD8C1, #BCD2EE, #BFA4A4" />
+        </label>
+        <label>
+          Border Colors
+          <input type="textbox" name="borderColors" value="#CCC, #AAA" />
+        </label>
+      </fieldset>
+    </form>
+
+		<script type="text/javascript" language="javasript">
+			 (function() {
+         window.uniqueId = window.uniqueId || 1;
+         var id = '89fa93c555704eeaaeed2c77d5026de2_' + (window.uniqueId++);
+         document.write('<div id="' + id + '" style="display:none;"></div>');
+
+         var applyColors = function() {
+            var parent  = document.getElementById(id).parentNode;
+
+            var stylesheet = parent.querySelectorAll('style.resume_colors');
+            stylesheet = stylesheet[0].sheet;
+            while (stylesheet.cssRules.length > 0) {
+              stylesheet.deleteRule(0);
+            }
+
+            var settings = parent.querySelectorAll('form.resume_config');
+            settings = settings[0].elements;
+
+            var resumeSkills = parent.querySelectorAll('.skills');
+            resumeSkills = resumeSkills[0];
+
+            var bgColorTable = settings.bgColors.value.split(',');
+            var borderColorTable = settings.borderColors.value.split(',');
+            var fgColorTable = settings.fgColors.value.split(',');
+
+            for (var i = 0; i < resumeSkills.children.length; i++) {
+              var child = resumeSkills.children[i];
+              if (child.className.includes('skill')) {
+                child.style.backgroundColor = bgColorTable[getRandomInt(0, bgColorTable.length)];
+                child.style.color = fgColorTable[getRandomInt(0, fgColorTable.length)];
+                child.style.fontWeight = 'bold';
+              }
+            }
+
+            if (settings.colorH1.checked) {
+              var headings = parent.querySelectorAll('h1');
+              for (var i = 0; i < headings.length; i++) {
+                var child = headings[i];
+                child.style.color = fgColorTable[getRandomInt(0, fgColorTable.length)];
+              }
+            }
+            if (settings.colorH2.checked) {
+              var headings = parent.querySelectorAll('h2');
+              for (var i = 0; i < headings.length; i++) {
+                var child = headings[i];
+                child.style.color = fgColorTable[getRandomInt(0, fgColorTable.length)];
+              }
+            }
+            if (settings.colorH3.checked) {
+              var headings = parent.querySelectorAll('h3');
+              for (var i = 0; i < headings.length; i++) {
+                var child = headings[i];
+                child.style.color = fgColorTable[getRandomInt(0, fgColorTable.length)];
+              }
+            }
+
+             var borders = parent.querySelectorAll('label.skill_filter div');
+             var borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+             for (var i = 0; i < borders.length; i++) {
+               var ele = borders[i];
+               if (settings.prismaticBorders.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderTopColor = borderColor;
+               if (settings.prismaticBorders.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderBottomColor = borderColor;
+               if (settings.prismaticBorders.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderLeftColor = borderColor;
+               if (settings.prismaticBorders.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderRightColor = borderColor;
+             }
+
+             var borders = parent.querySelectorAll('div.skill');
+             var borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+             for (var i = 0; i < borders.length; i++) {
+               var ele = borders[i];
+               if (!settings.skillBorderColors.checked) {
+                  borderColor = '';
+               }
+
+               if (settings.prismaticBorders.checked && settings.skillBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderTopColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.skillBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderBottomColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.skillBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderLeftColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.skillBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderRightColor = borderColor;
+             }
+
+             var borders = parent.querySelectorAll('div.timeline');
+             var borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+             if (!settings.timelineBorderColors.checked) {
+                borderColor = '';
+             }
+              var rule = '.timeline:before {';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-top:' + borderColor + ';';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-bottom:' + borderColor + ';';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-left:' + borderColor + ';';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-right:' + borderColor + ';';
+              rule += "margin-bottom: 3em; border-radius: 10px; content: ''; position: absolute; top: 0; left -10px; border-width: 10px; border-style: solid;";
+              rule += '}';
+              stylesheet.insertRule(rule, 0);
+              var rule = '.timeline:after {';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-top:' + borderColor + ';';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-bottom:' + borderColor + ';';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-left:' + borderColor + ';';
+              if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                 borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+              }
+              rule += 'border-right:' + borderColor + ';';
+              rule += "margin-top: 3em; border-radius: 10px; content: ''; position: absolute; bottom: 0; left -10px; border-width: 10px; border-style: solid;";
+              rule += '}';
+              stylesheet.insertRule(rule, 0);
+
+             for (var i = 0; i < borders.length; i++) {
+               var ele = borders[i];
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderTopColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderBottomColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderLeftColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderRightColor = borderColor;
+             }
+             var borders = parent.querySelectorAll('div.timeline .event .date');
+             for (var i = 0; i < borders.length; i++) {
+               var ele = borders[i];
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderTopColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderBottomColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderLeftColor = borderColor;
+               if (settings.prismaticBorders.checked && settings.timelineBorderColors.checked) {
+                  borderColor = borderColorTable[getRandomInt(0, borderColorTable.length)];
+               }
+               ele.style.borderRightColor = borderColor;
+             }
+
+            var mason = new MasonFlex(resumeSkills, {
+              //columnCount: 4
+            });
+            var filters = document.querySelectorAll('.skill_filter');
+            for (var i = 0; i < filters.length; i++) {
+              filters[i].addEventListener('change', function() {
+                mason.layout();
+              });
+            }
+         }
+         var registerListener = function () {
+            var parent  = document.getElementById(id).parentNode;
+            var settings = parent.querySelectorAll('form.resume_config');
+            settings = settings[0].elements;
+
+            for (var i = 0; i < settings.length; i++) {
+              settings[i].addEventListener('change', applyColors);
+            }
+         }
+         setTimeout(applyColors, 0);
+         setTimeout(registerListener, 0);
+			})();
+		</script>
+    
+    <div class="resume_config_footer"></div>
+  </body>
+</htmL>

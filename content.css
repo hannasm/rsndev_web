@@ -172,4 +172,22 @@ body.loading #heading3 {
   #right_border3 {
     display: none;
   }
+
+  .page-break-before {
+    display: table;
+    page-break-before: always;
+    clear: both;
+    break-before: always;
+  }
+  .page-break-after {
+    display: table;
+    page-break-after: always;
+    clear: both;
+    break-after: always;
+  }
+}
+
+.page-break-before ,
+.page-break-after {
+  display: none;
 }

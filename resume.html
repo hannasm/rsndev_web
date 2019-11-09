@@ -58,7 +58,7 @@
         <dd><a href="https://github.com/hannasm">https://github.com/hannasm</a></dd>
       </dl>
      </div>
-    <h3>Efficient and pragmatic technologist available for roles in software development. Interests
+    <h2>Efficient and pragmatic technologist available for roles in software development. Interests
         include internet technologies, machine translation and software architecture with a specific focus
         on creating simple, correct, and beautiful code.</h3>
 		<style type="text/css">
@@ -80,6 +80,7 @@
 				flex-flow: column wrap;
 				align-items:center;
 				justify-content:center;
+          height: 640px;
 			}
 			.skills .skill {
 				position: relative;
@@ -91,11 +92,10 @@
 			}
 			.skills .skill {
         border-radius: 50%;
-				border: 2px solid #CCC;
+				border: 1px solid #CCC;
 				text-align: center;
         vertical-align:middle;
         box-sizing: border-box;
-        line-height: 2em;
         position: relative;
         overflow: hidden;
 			}
@@ -251,7 +251,7 @@
       <div class="skill dev web"><div class="skilldesc">Web Crypto</div></div>
       <div class="skill med dev web"><div class="skilldesc">Mutation Observer</div></div>
       <div class="skill med dev web"><div class="skilldesc">Intersection Observer</div></div>
-      <div class="skill dev web"><div class="skilldesc">Responsive Design</div></div>
+      <div class="skill med dev web"><div class="skilldesc">Responsive Design</div></div>
     </div>
 		<style type="text/css">
     .timeline {
@@ -311,9 +311,6 @@
     .timeline .event .detail h3 {
       margin-left: 0.75em;
     }
-		.page-break {
-			display:none;
-		}
     @media print {
       .timeline .event {
         page-break-inside: avoid;
@@ -346,18 +343,13 @@
         page-break-inside: avoid;
         break-inside: avoid;
       }
-			.page-break {
-        display: block;
-        page-break-after: always;
-        clear: both;
-        break-after: always;
-      }
       /* this padding addresses a bug in chrome that puts the page break in the middle of the heading text */
       h1 { padding-top: 20px; }
     }
 		
     </style>
-		<div class="page-break"></div>
+		<div class="page-break-before"></div>
+		<div class="page-break-after"></div>
     <h1>Experience</h1>
     <div class="timeline">
       <div class="event">
@@ -382,11 +374,11 @@
         <div class="detail">
           <h3>Github Side Projects</h3>
           <ul>
-            <li>More production quality code published on github than most would care to look at</li>
-            <li><a href="https://github.com/hannasm/demandjs">https://github.com/hannasm/demandjs</a> - advanced web content lazy loader</li>
-            <li><a href="https://github.com/hannasm/FloodgateDotNet">https://github.com/hannasm/FloodgateDotNet</a> - high perf event throttling</li>
-            <li><a href="https://github.com/hannasm/masonflexjs">https://github.com/hannasm/masonflexjs</a> - high perf masonry layouts for web</li>
-            <li><a href="https://rsndev.com#resume">https://rsndev.com#resume</a> - this resume is published to and printed from the web</li>
+            <li>Production quality code, too many to list</li>
+            <li><a href="https://github.com/hannasm/demandjs">DemandJS</a> - advanced web content lazy loader</li>
+            <li><a href="https://github.com/hannasm/FloodgateDotNet">FloodgateDotNet</a> - high perf event throttling</li>
+            <li><a href="https://github.com/hannasm/masonflexjs">MasonFlexJS</a> - high perf masonry layouts for web</li>
+            <li><a href="https://rsndev.com#resume">rsndev.com#resume</a> - this resume published and printed from web</li>
           </ul>
         </div>
       </div>
@@ -427,9 +419,10 @@
         <div class="detail">
           <h3>Undergraduate Summer Scholars @ Miami University</h3>
           <ul>
-            <li>Collision Detection Research Grant</li>
-            <li>Implemented algorithms detecting overlap and penetration depth between 2D polygons</li>
-            <li>Deliverables included performance analysis, documentation and source code</li>
+            <li>collision detection research grant</li>
+            <li>overlap and penetration testing between 2D polygons</li>
+            <li>performance analysis, documentation and source code</li>
+            <li>linear algebra and geometric math</li>
           </ul>
         </div>
       </div>
@@ -439,7 +432,8 @@
           <h3>Software Tools Intern @ Intelligrated LLC</h3>
           <ul>
             <li>Internal tools development for software engineering group</li>
-            <li>Full waterfall process experience, requirements, design, development, and documentation</li>
+            <li>Full waterfall process experience</li>
+            <li>requirements, design, development, and documentation</li>
             <li>C# / .NET / Winforms</li>
           </ul>
         </div>
@@ -455,26 +449,5 @@
         </div>
       </div>
     </div>
-		<script type="text/javascript" language="javasript">
-			 (function() {
-				var parent  = document.getElementById('resumeSkills');
-				var colorTable = ['#B39DDB', '#C5CAE9', '#90CAF9', '#B2DFDB'];
-				for (var i = 0; i < parent.children.length; i++) {
-					var child = parent.children[i];
-					if (child.className.includes('skill')) {
-						child.style.backgroundColor = colorTable[getRandomInt(0, colorTable.length)];
-					}
-				}
-				var mason = new MasonFlex(parent, {
-					//columnCount: 4
-				});
-				var filters = document.querySelectorAll('.skill_filter');
-				for (var i = 0; i < filters.length; i++) {
-					filters[i].addEventListener('change', function() {
-						mason.layout();
-					});
-				}
-			})();
-		</script>
   </body>
 </htmL>

@@ -5,15 +5,18 @@
   <body>
     <style type="text/css">
       .cover {
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         position: relative;
+          margin-bottom: 5em;
       }
       .cover .p1 {
         width: 80%;
+        margin-top: 25em;
+      }
+      .cover .p1 + .p1 {
         margin-top: 1em;
       }
       .cover_return input + span,
@@ -68,8 +71,8 @@ window.updateResumeCoverletterValue = function (ele) {
         <a href="mailto:hannasm@gmail.com">hannasm@gmail.com</a>
       </div>
       <div class="p1">
-        Dear <input type="text" value="blah blah blah" id="coverletter_addressee" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_addressee_value">blah blah blah</span>,<br/>
-        Hi my name is Sean Hanna, and i am an experienced software engineer and I am responding to your opening for a <input type="text" value="blah blah blah"  id="coverletter_position" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_position_value">blah blah blah</span>. I would be excited to play a role in your business with my many talents, such as <input type="text" value="blah blah blah"  id="coverletter_abilities" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_abilities_value">blah blah blah</span>. I have a successful track record of creating software for large and highly visible clients. I am a self starter, and a driven individual willing to experiment and explore different approaches to solving problems. I respond promptly to coworkers requests, communicate openly and clearly, and explain details as needed. I'm energetic and enthusiastic about learning and becoming a better engineer and would like to join a team of like-minded individuals creating meaningful software.
+        Dear <input type="text" value="(company name here)" id="coverletter_addressee" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_addressee_value">(company name here)</span>,<br/>
+        Hello, my name is Sean Hanna, and i am an experienced software engineer interested in joining your team as a <input type="text" value="(position name here)"  id="coverletter_position" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_position_value">(position name here)</span>. I have strong fundamental software engineering and social skills and can be a versatile contributor. I will be coming from an existing backend engineering role which has exposed me to <input type="text" value="(skills relevant to position here)"  id="coverletter_abilities" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_abilities_value">(skills relevant to position here)</span>. I believe that my unique perspective and skillset could be a valuable addition to your organization. 
       </div>
       <div class="p1">
         Please contact me with any questions you may have. I look forward to hearing from you soon. 
