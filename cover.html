@@ -35,9 +35,6 @@
         .cover input + span {
           display: inline;
         }
-        .cover {
-          page-break-after: always;
-        }
       }
       .cover_send {
         position: absolute;
@@ -57,7 +54,7 @@ window.updateResumeCoverletterValue = function (ele) {
   target.innerText = '' + ele.value;
 };
     </script>
-    <div class="cover">
+    <div class="cover page">
       <div class="cover_send">
         <input type="text" value="Company Name" id="coverletter_send1" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_send1_value">Company Name</span><br/>
         <input type="text" value="Address 1" id="coverletter_send2" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_send2_value">Address 1</span><br/>

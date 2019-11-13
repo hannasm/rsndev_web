@@ -185,6 +185,13 @@ body.loading #heading3 {
     clear: both;
     break-after: always;
   }
+  .page {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-after: always;
+    page-break-after: always;
+  }
+
 }
 
 .page-break-before ,
