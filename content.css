@@ -10,6 +10,10 @@
 .clear {
   clear: both;
 }
+h2 {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
 #right_border1 {
   animation: 1.4s ease-out 0s 1 slideInFromTop;
   height:95%;
@@ -101,6 +105,7 @@ body > main:last-of-type {
   padding-left: 16px;
   margin-top: -24px;
   margin-right: 17px;
+  overflow-y: scroll;
 }
 
 
