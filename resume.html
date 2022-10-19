@@ -66,6 +66,12 @@
 			.masonflex-panel, .masonflex-pad {
 				/*width: 20% !important;*/
 			}
+      @media screen and (max-width: 800px) {
+        div.skills-page ul.skills.skills.skills.skills { 
+          height: auto !important;
+          max-height: none !important;
+        }
+      }
 			#simple_skills:not(:checked) ~ .skills { 
 				display: flex;
 				flex-flow: row wrap;
@@ -355,6 +361,8 @@
          which with min-width: 1 just causes word wrapping to happen instead */ 
       .timeline .event div.date {
         min-width: 1em;
+        border-top: 2px solid #000;
+        border-bottom: 0px;
       }
     }
     .timeline .event {
