@@ -66,59 +66,43 @@
 			.masonflex-panel, .masonflex-pad {
 				/*width: 20% !important;*/
 			}
-			.skills { 
+			#simple_skills:checked ~ .skills { 
 				display: flex;
-				flex-flow: row wrap;
-				max-width: 675px;
-				display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-				display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-				display: -ms-flexbox;      /* TWEENER - IE 10 */
-				display: -webkit-flex;     /* NEW - Chrome */
-				display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-				-webkit-flex-flow: column wrap;
-				-moz-flex-flow: column wrap;
-				-ms-flex-flow: column wrap;
-				flex-flow: column wrap;
-				align-items:center;
-				justify-content:center;
-          height: 640px;
+        flex-direction:column;
+        flex-wrap: wrap;
+        flex-flow:row wrap;
+        max-height: 400px;
+          max-width:750px;
+          justify-content: left;
+            column-gap: 1.5em;
 			}
-			.skills .skill {
-				position: relative;
+			#simple_skills:checked ~ .skills .skill {
 				-webkit-box-ordinal-group: 1;
 				-moz-box-ordinal-group: 1;
 				-ms-flex-order: 1;
 				-webkit-order: 1;
 				order: 1;
 			}
-			.skills .skill {
-        border-radius: 50%;
-				border: 1px solid #CCC;
-				text-align: center;
+			#simple_skills:checked ~ .skills .skill {
         vertical-align:middle;
-        box-sizing: border-box;
-        position: relative;
-        overflow: hidden;
 			}
-      .skills .skill {
-        width: 135px;
-        padding-top: 45px; 
-        padding-left: 1em;
-        padding-right: 1em;
+			#simple_skills:checked ~ .skills .skill {
+        background-color: #FFF !important;
+        color: #000 !important;
+        font-weight: normal !important;
+			}
+      #simple_skills:checked ~ .skills .skill {
+        width: 200px;
         position: relative;
+        font-size: 18pt;
       }
-      .skills .big {
-        padding-top: 85px; 
+      #simple_skills:checked ~ .skills .big {
+        font-size: 14pt;
       }
-      .skills .med {
-        padding-top: 65px; 
+      #simple_skills:checked ~ .skills .med {
+        font-size: 12pt;
       }
-      .skill .skilldesc {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+      #simple_skills:checked ~ .skill .skilldesc {
         width: 100%;
         height: 100%;
         display: flex;
@@ -159,46 +143,56 @@
         color: darkorange;
       }
       #skillfilter_all:checked ~ .skills .skill {
-        display: inline-block;
+        display: list-item;
       }
       #skillfilter_dev:checked ~ .skills .skill {
         display: none;
       }
       #skillfilter_dev:checked ~ .skills .skill.dev {
-        display: inline-block;
+        display: list-item;
       }
       #skillfilter_admin:checked ~ .skills .skill {
         display: none;
       }
       #skillfilter_admin:checked ~ .skills .skill.admin {
-        display: inline-block;
+        display: list-item;
       }
       #skillfilter_dotnet:checked ~ .skills .skill {
         display: none;
       }
       #skillfilter_dotnet:checked ~ .skills .skill.dotnet {
-        display: inline-block;
+        display: list-item;
       }
       #skillfilter_database:checked ~ .skills .skill {
         display: none;
       }
       #skillfilter_database:checked ~ .skills .skill.database {
-        display: inline-block;
+        display: list-item;
       }
       #skillfilter_web:checked ~ .skills .skill {
         display: none;
       }
       #skillfilter_web:checked ~ .skills .skill.web {
-        display: inline-block;
+        display: list-item;
+      }
+      .skills-page {
+        margin-top:0.5em;
       }
 
       @media print {
         .skill_filter {
          display: none;
         }
+        .skills {
+          page-break-inside: avoid;
+          break-inside: avoid;
+          page-break-after: auto;
+          break-after: auto;
+        }
       }
 		</style>
-    <h1>Skills</h1>
+    <div class="skills-page">
+      <h1>Skills</h1>
 
         <!-- need to eliminate any literal white space between filter elements or we get wierd gaps in the
              ui due to inline-block treatment of those spaces -->
@@ -213,54 +207,56 @@
         --><input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_database" /><!--
         --><label class="skill_filter " for="skillfilter_database"><div class="skill_filter">database</div></label><!--
         --><input type="radio" name="skill_filter" class="skill_filter" id="skillfilter_web" /><!--
-        --><label class="skill_filter last" for="skillfilter_web"><div class="skill_filter">web</div></label>
-        
-        <div class="skills" id="resumeSkills">
-          <div class="skill big dev dotnet"><div class="skilldesc">C#</div></div>
-          <div class="skill big dev dotnet"><div class="skilldesc">Powershell</div></div>
-          <div class="skill big dev database"><div class="skilldesc">SQL</div></div>
-          <div class="skill big dev web"><div class="skilldesc">Javascript</div></div>
-          <div class="skill big dev dotnet database"><div class="skilldesc">LINQ</div></div>
-          <div class="skill med dev web"><div class="skilldesc">HTML</div></div>
-          <div class="skill med dev web dotnet"><div class="skilldesc">Dotnet Core</div></div>
-          <div class="skill dev web dotnet"><div class="skilldesc">REST</div></div>
-          <div class="skill med dev web dotnet"><div class="skilldesc">Domain Drive Design (DDD)</div></div>
-          <div class="skill med dev web dotnet"><div class="skilldesc">ASP.NET</div></div>
-          <div class="skill med dev web"><div class="skilldesc">CSS</div></div>
-          <div class="skill med dev"><div class="skilldesc">C/C++</div></div>
-          <div class="skill med dev dotnet"><div class="skilldesc">VB</div></div>
-          <div class="skill med dev"><div class="skilldesc">Java</div></div>
-          <div class="skill dev"><div class="skilldesc">PHP</div></div>
-          <div class="skill big admin dotnet"><div class="skilldesc">Windows</div></div>
-          <div class="skill big admin dotnet"><div class="skilldesc">Linux</div></div>
-          <div class="skill admin"><div class="skilldesc">AWS</div></div>
-          <div class="skill big admin"><div class="skilldesc">Azure</div></div>
-          <div class="skill dev web"><div class="skilldesc">AngularJS</div></div>
-          <div class="skill med dev web"><div class="skilldesc">TypeScript</div></div>
-          <div class="skill med dev"><div class="skilldesc">Git</div></div>
-          <div class="skill med dev"><div class="skilldesc">Svn</div></div>
-          <div class="skill med dev"><div class="skilldesc">TFS</div></div>
-          <div class="skill big dev web"><div class="skilldesc">Soap</div></div>
-          <div class="skill dev web"><div class="skilldesc">Json</div></div>
-          <div class="skill med dev dotnet"><div class="skilldesc">Android</div></div>
-          <div class="skill dev dotnet"><div class="skilldesc">Windows Phone</div></div>
-          <div class="skill dev dotnet"><div class="skilldesc">Xamarin</div></div>
-          <div class="skill dev dotnet"><div class="skilldesc">Mobile</div></div>
-          <div class="skill admin"><div class="skilldesc">VLANs</div></div>
-          <div class="skill admin"><div class="skilldesc">VPN Security</div></div>
-          <div class="skill admin"><div class="skilldesc">DNS</div></div>
-          <div class="skill admin"><div class="skilldesc">DHCP</div></div>
-          <div class="skill database"><div class="skilldesc">MS SQL</div></div>
-          <div class="skill big database"><div class="skilldesc">Oracle</div></div>
-          <div class="skill med database"><div class="skilldesc">MySQL</div></div>
-          <div class="skill med database"><div class="skilldesc">Postgres</div></div>
-          <div class="skill dev web"><div class="skilldesc">Web Crypto</div></div>
-          <div class="skill med dev web"><div class="skilldesc">Mutation Observer</div></div>
-          <div class="skill med dev web"><div class="skilldesc">Intersection Observer</div></div>
-          <div class="skill med dev web"><div class="skilldesc">Responsive Design</div></div>
-        </div>
+        --><label class="skill_filter" for="skillfilter_web"><div class="skill_filter">web</div></label><!--
+        --><input type="checkbox" name="simple_skills" class="skill_filter" id="simple_skills" /><!--
+        --><label class="skill_filter last" for="simple_skills"><div class="skill_filter">simplify</div></label>
 
+        <ul class="skills" id="resumeSkills">
+          <li class="skill big dev dotnet"><div class="skilldesc">C#</div></li>
+          <li class="skill big dev dotnet"><div class="skilldesc">Powershell</div></li>
+          <li class="skill big dev database"><div class="skilldesc">SQL</div></li>
+          <li class="skill big dev web"><div class="skilldesc">Javascript</div></li>
+          <li class="skill big dev dotnet database"><div class="skilldesc">LINQ</div></li>
+          <li class="skill med dev web"><div class="skilldesc">HTML</div></li>
+          <li class="skill med dev web dotnet"><div class="skilldesc">Dotnet Core</div></li>
+          <li class="skill dev web dotnet"><div class="skilldesc">REST</div></li>
+          <li class="skill med dev web dotnet"><div class="skilldesc">Domain Drive Design (DDD)</div></li>
+          <li class="skill med dev web dotnet"><div class="skilldesc">ASP.NET</div></li>
+          <li class="skill med dev web"><div class="skilldesc">CSS</div></li>
+          <li class="skill med dev"><div class="skilldesc">C/C++</div></li>
+          <li class="skill med dev dotnet"><div class="skilldesc">VB</div></li>
+          <li class="skill med dev"><div class="skilldesc">Java</div></li>
+          <li class="skill dev"><div class="skilldesc">PHP</div></li>
+          <li class="skill big admin dotnet"><div class="skilldesc">Windows</div></li>
+          <li class="skill big admin dotnet"><div class="skilldesc">Linux</div></li>
+          <li class="skill admin"><div class="skilldesc">AWS</div></li>
+          <li class="skill big admin"><div class="skilldesc">Azure</div></li>
+          <li class="skill dev web"><div class="skilldesc">AngularJS</div></li>
+          <li class="skill med dev web"><div class="skilldesc">TypeScript</div></li>
+          <li class="skill med dev"><div class="skilldesc">Git</div></li>
+          <li class="skill med dev"><div class="skilldesc">Svn</div></li>
+          <li class="skill med dev"><div class="skilldesc">TFS</div></li>
+          <li class="skill big dev web"><div class="skilldesc">Soap</div></li>
+          <li class="skill dev web"><div class="skilldesc">Json</div></li>
+          <li class="skill med dev dotnet"><div class="skilldesc">Android</div></li>
+          <li class="skill dev dotnet"><div class="skilldesc">Windows Phone</div></li>
+          <li class="skill dev dotnet"><div class="skilldesc">Xamarin</div></li>
+          <li class="skill dev dotnet"><div class="skilldesc">Mobile</div></li>
+          <li class="skill admin"><div class="skilldesc">VLANs</div></li>
+          <li class="skill admin"><div class="skilldesc">VPN Security</div></li>
+          <li class="skill admin"><div class="skilldesc">DNS</div></li>
+          <li class="skill admin"><div class="skilldesc">DHCP</div></li>
+          <li class="skill database"><div class="skilldesc">MS SQL</div></li>
+          <li class="skill big database"><div class="skilldesc">Oracle</div></li>
+          <li class="skill med database"><div class="skilldesc">MySQL</div></li>
+          <li class="skill med database"><div class="skilldesc">Postgres</div></li>
+          <li class="skill dev web"><div class="skilldesc">Web Crypto</div></li>
+          <li class="skill med dev web"><div class="skilldesc">Mutation Observer</div></li>
+          <li class="skill med dev web"><div class="skilldesc">Intersection Observer</div></li>
+          <li class="skill med dev web"><div class="skilldesc">Responsive Design</div></li>
+        </ul>
     </div>
+
 		<style type="text/css">
     .timeline {
       border-left: 1px solid #000;
@@ -320,6 +316,15 @@
       margin-left: 0.75em;
     }
     @media print {
+      .timeline-page {
+        page-break-before: auto;
+        break-before: auto;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        page-break-after: auto;
+        break-after: auto;
+      }
+
       .timeline .event {
         page-break-inside: avoid;
         break-inside: avoid;
@@ -354,10 +359,12 @@
       /* this padding addresses a bug in chrome that puts the page break in the middle of the heading text */
       h1 {
         padding-top: 1em;
+          page-break-before: auto;
+          break-before: auto;
       }
     }
-		
     </style>
+    <div class="timeline-page">
     <h1>Experience</h1>
     <div class="timeline">
       <div class="event">
@@ -458,6 +465,7 @@
           </ul>
         </div>
       </div>
+    </div>
     </div>
   </body>
 </htmL>
