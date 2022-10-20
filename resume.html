@@ -250,6 +250,7 @@
       }
       .skills-page {
         margin-top:0.5em;
+        min-height:450px; /* masonflex panel relies on overflow to render in some cases and this causes Experience section to overlap overflow from skills, this is arbitary heuristical padding, it almost looks like there is even a bug in chrome */
       }
 
       @media print {
