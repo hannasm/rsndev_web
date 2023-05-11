@@ -52,6 +52,10 @@ window.updateResumeCoverletterValue = function (ele) {
   var id = ele.id;
   var target = document.getElementById(id + '_value');
   target.innerText = '' + ele.value;
+  var target2 = document.getElementById(id + '_value_2');
+  if (target2) {
+    target2.innerText = '' + ele.value;
+  }
 };
     </script>
     <div class="cover page">
@@ -68,11 +72,13 @@ window.updateResumeCoverletterValue = function (ele) {
         <a href="mailto:hannasm@gmail.com">hannasm@gmail.com</a>
       </div>
       <div class="p1">
-        Dear <input type="text" value="(company name here)" id="coverletter_addressee" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_addressee_value">(company name here)</span>,<br/>
-        Hello, my name is Sean Hanna, and i am an experienced software engineer interested in joining your team as a <input type="text" value="(position name here)"  id="coverletter_position" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_position_value">(position name here)</span>. I have strong fundamental software engineering and social skills and can be a versatile contributor. I will be coming from an existing backend engineering role which has exposed me to <input type="text" value="(skills relevant to position here)"  id="coverletter_abilities" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_abilities_value">(skills relevant to position here)</span>. I believe that my unique perspective and skillset could be a valuable addition to your organization. 
-      </div>
+        Dear <input type="text" value="(company name here)" id="coverletter_addressee" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_addressee_value">(company name here)</span></div>
       <div class="p1">
-        Please contact me with any questions you may have. I look forward to hearing from you soon. 
+        I'm excited to apply for the position of  <input type="text" value="(position name here)"  id="coverletter_position" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_position_value">(position name here)</span>. As an experienced software engineer with a strong background in <input type="text" value="(skills relevant to position here)"  id="coverletter_abilities" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_abilities_value">(skills relevant to position here)</span>, I believe that my skills and expertise make me an ideal fit for your team. I'm a natural leader with a passion for mentoring and empowering others, and I'm confident that I can contribute to your organization's success by delivering next-level solutions that are both efficient and high-performing.
+      </div><div class="p1">
+        In my current role as a Lead Dotnet Developer, I've honed my skills in a range of technologies like <input type="text" value="(technologies relevant to position here)"  id="coverletter_technologies" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_technologies_value">(technologies relevant to position here)</span>, and have gained experience in <input type="text" value="(experience relevant to position here)"  id="coverletter_experience" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_experience_value">(experience relevant to position here)</span>. I'm committed to delivering simple, correct, and beautiful code that drives business growth and success, and am comfortable working with cross-functional teams to achieve shared goals.
+      </div><div class="p1">
+        I'm excited about the prospect of joining <span id="coverletter_addressee_value_2">(company name here)</span> and contributing to your mission <input type="text" value="(mission relevant to position here)"  id="coverletter_mission" onchange="updateResumeCoverletterValue(this)" /><span id="coverletter_mission_value">(mission relevant to position here)</span>. Please don't hesitate to reach out if you have any questions or if you would like to discuss my qualifications in further detail. Thank you for your time and consideration.
       </div>
       <div class="p1">
         Regards,<br />

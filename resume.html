@@ -8,7 +8,7 @@
         margin: .25em 0; /* dont waste so much whitespace */
       }
       h2 {
-        font-size: 1.25em;
+        font-size: 1.2em;
         margin: .5em 0; /* dont waste so much whitespace */
       }
     </style>
@@ -70,13 +70,17 @@
 				width: 20% !important;
 			}
       @media screen and (max-width: 800px) {
-        div.skills-page ul.skills.skills.skills.skills { 
+/*        div.skills-page ul.skills.skills.skills.skills { 
           height: auto !important;
           max-height: none !important;
-        }
+        }*/
         .masonflex-panel, .masonflex-pad {
-          width: 100% !important;
+          width: 50% !important;
         }
+      }
+      .skills {
+        padding-left: 0px;
+        padding-right:0px;
       }
 			#simple_skills:not(:checked) ~ .skills { 
 				display: flex;
@@ -114,17 +118,17 @@
 			}
       #simple_skills:not(:checked) ~ .skills .skill {
         width: 115px;
-        padding-top: 45px; 
+        padding-top: 30px; 
         padding-left: 1em;
         padding-right: 1em;
         position: relative;
 				list-style-type: none;
       }
       #simple_skills:not(:checked) ~ .skills .big {
-        padding-top: 85px; 
+        padding-top: 60px; 
       }
       #simple_skills:not(:checked) ~ .skills .med {
-        padding-top: 65px; 
+        padding-top: 45px; 
       }
       #simple_skills:not(:checked) ~ .skills .skill .skilldesc {
         position: absolute;
@@ -312,14 +316,10 @@
           <li class="skill big admin"><div class="skilldesc">Azure</div></li>
           <li class="skill dev web"><div class="skilldesc">AngularJS</div></li>
           <li class="skill med dev"><div class="skilldesc">Git</div></li>
-          <li class="skill med dev"><div class="skilldesc">Svn</div></li>
           <li class="skill med dev"><div class="skilldesc">TFS</div></li>
           <li class="skill big dev web"><div class="skilldesc">Soap</div></li>
           <li class="skill dev web"><div class="skilldesc">Json</div></li>
           <li class="skill med dev dotnet"><div class="skilldesc">Android</div></li>
-          <li class="skill dev dotnet"><div class="skilldesc">Windows Phone</div></li>
-          <li class="skill dev dotnet"><div class="skilldesc">Xamarin</div></li>
-          <li class="skill dev dotnet"><div class="skilldesc">Mobile</div></li>
           <li class="skill admin"><div class="skilldesc">VLANs</div></li>
           <li class="skill admin"><div class="skilldesc">VPN Security</div></li>
           <li class="skill admin"><div class="skilldesc">DNS</div></li>
@@ -398,6 +398,13 @@
       margin-left: 0.75em;
     }
     @media print {
+      h1 {
+          page-break-inside: avoid;
+          break-inside: avoid;
+          page-break-after: avoid;
+          break-after: avoid;
+      }
+
       .timeline-page {
         page-break-before: auto;
         break-before: auto;
@@ -473,7 +480,6 @@
         <div class="detail">
           <h3>Github Side Projects</h3>
           <ul>
-            <li>Production quality code, too many to list</li>
             <li><a href="https://github.com/hannasm/demandjs">DemandJS</a> - advanced web content lazy loader</li>
             <li><a href="https://github.com/hannasm/FloodgateDotNet">FloodgateDotNet</a> - high perf event throttling</li>
             <li><a href="https://github.com/hannasm/masonflexjs">MasonFlexJS</a> - high perf masonry layouts for web</li>
