@@ -76,4 +76,5 @@
   _import('https://cdn.rawgit.com/showdownjs/showdown/1.8.4/dist/showdown.min.js');
   _import('masonflex.min.js');
   _import('demandjs.min.js');
+  _import('currency.min.js');
 })();

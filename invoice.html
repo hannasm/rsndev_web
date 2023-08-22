@@ -1,0 +1,320 @@
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/#invoice" />
+  </head>
+  <body>
+    <style type="text/css">
+      .invoice {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+				margin-bottom: 5em;
+				min-height: 90%;
+				overflow:hidden;
+      }
+			tr#invoice_fee_total td+td {
+				text-align: right;
+			}
+
+			.invoice table#invoice_lines {
+				border-spacing: 1em;
+				border-collapse: separate;
+			}
+			#invoice_lines .linefee, 
+			#invoice_lines .linefee input,
+			#invoice_lines .linefee span {
+				width: 12em;
+				text-align: right;
+			}
+			#invoice_lines .linedate, 
+			#invoice_lines .linedate input,
+			#invoice_lines .linedate span {
+				width: 12em;
+			}
+			#invoice_lines .linedesc, 
+			#invoice_lines .linedesc input,
+			#invoice_lines .linedesc span {
+				width: 40em;
+			}
+      .invoice td {
+      }
+      .invoice .p1 {
+        width: 95%;
+        margin-top: 10em;
+      }
+      .invoice .p1 + .p1 {
+        margin-top: 1em;
+      }
+      .invoice input + span {
+        display: none;
+      }
+
+/*
+			<div class="p1 invoice_ispaid_container">
+				<input type="checkbox" id="invoice_ispaid" /><div id="invoice_ispaid_true">PAID</div><div id="invoice_ispaid_false">UNPAID</div>
+			</div>
+*/
+
+			.invoice_ispaid_container {
+				text-align: center;
+			}
+			#invoice_ispaid:not(:checked) ~ .invoice_ispaid_container #invoice_ispaid_true {
+				display: none;
+			}
+			#invoice_ispaid:checked ~ .invoice_send div:has(#invoice_dueDate),
+			#invoice_ispaid:checked ~ .invoice_ispaid_container #invoice_ispaid_false {
+				display: none;
+			}
+			#invoice_ispaid_false,
+			#invoice_ispaid_true {
+				font-size: 18pt;
+				font-weight: bold;
+				text-decoration: underline;
+			}
+			
+      @media print {
+        .invoice input {
+          display: none;
+        }
+        .invoice input + span {
+          display: inline;
+        }
+				.p1.commands { display: none; }
+				.p1.saveurl { 
+					font-size:3pt; 
+					position: absolute;
+					bottom: 3em;
+					left: 1em;
+				}
+      }
+      .invoice_send {
+        position: absolute;
+        left: 1em;
+        top: 1em;
+      }
+      .invoice_return {
+        position: absolute;
+        right: 1em;
+        top: 1em;
+      }
+    </style>
+    <script type="text/javscript" language="javascript">
+      window.getParsedHash = function() {
+        return new URLSearchParams(window.location.hash.substring(1));
+      }
+      window.getHashValue = function(key) {
+        let parsedHash = window.getParsedHash();
+        return parseHash.get(key);
+      }
+      window.invoiceCalculateFee = function() {
+        let inputs = document.querySelectorAll('.invoice input[id$="fee"]');
+        let total = currency(0);
+        for (const input of inputs) {
+          var amount = currency(input.value);
+          total = total.add(amount);
+        }
+        let totalField = document.querySelector('.invoice #invoice_fee_total_value');
+        totalField.innerText = total.format();
+      }
+			window.parseISOString = function(s) {
+				var b = s.split(/\D+/);
+				return new Date(Date.UTC(b[0], --b[1], b[2], b[3]??0, b[4]??0, b[5]??0, b[6]??0));
+			}
+			window.convertUTCDateToLocalDate = function(date) {
+					var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
+					return newDate;   
+			}
+      window.updateInvoiceValue = function (ele) {
+        var id = ele.id;
+        let value = ele.value;
+        if (id === 'invoice_item_count') {
+          const count = parseInt(value);
+          const target = document.querySelector('.invoice table#invoice_lines tbody'); 
+          while (target.children.length > count) {
+            target.children[target.children.length-1].remove();
+          }
+          for (let i = 1; i <= count; i++) {
+            const ele = target.querySelector('tr#invoice_line_' + i);
+            if (!ele) {
+                    let content = `<table>
+          <tr id="invoice_line_[[lineNo]]">
+            <td class="linedate"><input type="date" id="invoice_item_[[lineNo]]_date" onchange="updateInvoiceValue(this)" /><span id="invoice_item_[[lineNo]]_date_value">DATE</span></td>
+            <td class="linedesc"><input type="text" id="invoice_item_[[lineNo]]_desc" onchange="updateInvoiceValue(this)" /><span id="invoice_item_[[lineNo]]_desc_value">DESC</span></td>
+            <td class="linefee"><input type="number" id="invoice_item_[[lineNo]]_fee" onchange="updateInvoiceValue(this)" /><span id="invoice_item_[[lineNo]]_fee_value">FEE</span></td>
+     </tr></table>`
+              content = content.replaceAll('[[lineNo]]', '' + i);
+              let ele = document.createRange().createContextualFragment(content);
+							ele = ele.children[0].children[0].children[0];
+
+							const input = ele.querySelector('.linedate input');
+							const ref = document.querySelector('.invoice #invoice_date');
+							input.value = ref.value;
+
+              target.appendChild(ele);
+            }
+          }
+					window.displayInvoiceHotlink();
+          return;
+        }
+				if (id === "invoice_generatedOn") {
+					var dueDateInput = document.getElementById('invoice_dueDate');
+					var calcDate = parseISOString(ele.value);
+					calcDate.setDate(calcDate.getDate() + 14);
+					dueDateInput.value = calcDate.toISOString().substring(0,10);
+					dueDateInput.onchange();
+				}
+				if (id === 'invoice_date') {
+					const others = document.querySelectorAll('.invoice #invoice_lines .linedate input');
+					for (const input of others) {
+						if (input.value === input.defaultValue) {
+							input.value = value;
+							input.onchange();
+						}
+					}
+				}
+        if (id.endsWith('fee')) {
+          value = currency(ele.value).format();
+          setTimeout(window.invoiceCalculateFee, 1);
+        }
+        var target = document.getElementById(id + '_value');
+				if (target) {
+					target.innerText = '' + value;
+				}
+        var target2 = document.getElementById(id + '_value_2');
+        if (target2) {
+          target2.innerText = '' + value;
+        }
+				window.displayInvoiceHotlink();
+      };
+
+      window.modifyInvoiceRows = function(count) {
+        const target = document.querySelector('.invoice input#invoice_item_count');
+        let value = parseInt(target.value);
+        const rement = parseInt(count);
+        value += rement;
+        target.value = value;
+        target.onchange();
+      }
+
+      window.populateInvoiceFromHash = function () {
+        const data = window.getParsedHash();
+        for (const key of data.keys()) {
+          if (key.startsWith('invoice')) {
+            const ele = document.querySelector('input#' + key);
+            if (ele) { 
+							if (ele.type == 'checkbox' ||
+									ele.type == 'radio') {
+								ele.checked = data.get(key) === 'true';
+								ele.onchange();
+							} else {
+								const val = data.get(key);
+								ele.value = val;
+								ele.onchange();
+							}
+            }
+          }
+        }
+      }
+
+			window.calculateInvoiceHotlink = function () {
+				const elements = document.querySelectorAll('.invoice input');
+				let result = new URLSearchParams();
+				for (let element of elements) {
+					if (element.type == 'checkbox' ||
+							element.type == 'radio') {
+						result.append(element.id, element.checked);
+					} else {
+						result.append(element.id, element.value);
+					}
+				}
+				return result.toString();
+			}
+			window.displayInvoiceHotlink = function () {
+				const hotlink = window.calculateInvoiceHotlink();
+				const target = document.querySelector('.invoice #invoice_save_url');
+				target.href = '/#invoice=true&' + hotlink
+				target.innerText = '/#invoice=true&' + hotlink
+			}
+      window.populateInvoiceFromHash();
+			window.displayInvoiceHotlink();
+      addEventListener('hashchange', window.populateInvoiceFromHashChange);
+    </script>
+    <div class="invoice page">
+			<input type="checkbox" class="state" id="invoice_ispaid" onchange="updateInvoiceValue(this)" />
+      <div class="invoice_send">
+        <b>Bill To:</b><br/>
+        <input type="text" value="Company Name" id="invoiceletter_send1" onchange="updateInvoiceValue(this)" /><span id="invoiceletter_send1_value">Company Name</span><br/>
+        <input type="text" value="Address 1" id="invoiceletter_send2" onchange="updateInvoiceValue(this)" /><span id="invoiceletter_send2_value">Address 1</span><br/>
+        <input type="text" value="Address 2" id="invoiceletter_send3" onchange="updateInvoiceValue(this)" /><span id="invoiceletter_send3_value">Address 2</span><br/>
+        <input type="text" value="Address 3" id="invoiceletter_send4" onchange="updateInvoiceValue(this)" /><span id="invoiceletter_send4_value">Address 3</span><br/>
+        <div>
+					<b>Generated On:</b>
+					<input type="datetime-local" value="Generated On" id="invoice_generatedOn" onchange="updateInvoiceValue(this)" /><span id="invoice_generatedOn_value">Generated On</span>
+				</div>
+				<div>
+					<b>Due Date:</b>
+					<input type="date" value="Address 1" id="invoice_dueDate" onchange="updateInvoiceValue(this)" /><span id="invoice_dueDate_value">Due Date</span><br/>
+				</div>
+				<script>
+					var generatedOnInput = document.getElementById('invoice_generatedOn');
+					if (generatedOnInput.value === '') {
+						var currentDate = convertUTCDateToLocalDate(new Date());
+						generatedOnInput.value = currentDate.toISOString().substring(0, currentDate.toISOString().indexOf('.'));
+						generatedOnInput.onchange();
+					}
+				</script>
+      </div>
+      <div class="invoice_return">
+        <b>Bill From:</b><br/>
+        Sean Hanna<br />
+        Resonance Development
+        <address>4404 Hillside Ave,<br />
+          Cincinnati Oh, 45233</address>
+        <a href="tel:+15132555383">+1-513-255-5383</a><br/>
+        <a href="mailto:hannasm@gmail.com">hannasm@gmail.com</a>
+      </div>
+      <h3 class="p1">
+        Invoice for <input type="date" id="invoice_date" onchange="updateInvoiceValue(this)" /><span id="invoice_date_value">Date</span>
+      </h3>
+
+			<div class="p1 invoice_ispaid_container">
+				<label for="invoice_ispaid">
+					<span id="invoice_ispaid_true">PAID</span>
+					<span id="invoice_ispaid_false">UNPAID</span>
+				</label>
+			</div>
+
+      <div class="p1 commands" style="border: 2px solid #000; border-radius:2px;padding:1em;margin-bottom:1em;margin-top:1em;">
+        <input type="number" class="state" id="invoice_item_count" onchange="updateInvoiceValue(this)" value="1" />
+        <input type="button" value="Add Row" onclick="modifyInvoiceRows(1)" />
+        <input type="button" value="Remove Row" onclick="modifyInvoiceRows(-1)" />
+      </div>
+
+      <table id="invoice_lines">
+        <thead><tr><th class="linedate">Date</th><th class="linedesc">Description</th><th class="linefee">Fee</th></tr></thead>
+        <tbody>
+          <tr id="invoice_line_1">
+            <td class="linedate"><input type="date" id="invoice_item_1_date" onchange="updateInvoiceValue(this)" /><span id="invoice_item_1_date_value">DATE</span></td>
+            <td class="linedesc"><input type="text" id="invoice_item_1_desc" onchange="updateInvoiceValue(this)" /><span id="invoice_item_1_desc_value">DESC</span></td>
+            <td class="linefee"><input type="number" id="invoice_item_1_fee" onchange="updateInvoiceValue(this)" /><span id="invoice_item_1_fee_value">FEE</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr id="invoice_fee_total">
+            <td colspan="2" style="text-align:right;">Total:</td><td><span id="invoice_fee_total_value">$0.00</span></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="p1">
+        Regards,<br />
+        &nbsp;&nbsp;&nbsp;Sean Hanna
+      </div>
+			<div class="p1 saveurl">
+				<b>Invoice Save Url:</b>
+				<a id="invoice_save_url"></a>
+			</div>
+    </div>
+  </body>
+</htmL>

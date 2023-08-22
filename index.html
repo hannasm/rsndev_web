@@ -9,6 +9,7 @@
   <body>
 		<input type="radio" name="hamburger" class="hamburger" id="hamburger_close" checked="checked"/>
 		<input type="radio" name="hamburger" class="hamburger" id="hamburger_open" />
+    <input type="checkbox" class="state" id="invoice_target" />
 		<main class="page" id="homeGym">
 			<link rel="prefetch" href="homegym_generated.html" type="text/html" class="demand" />
 		</main>
@@ -30,6 +31,9 @@
       <div class="page-break-before"></div>
       <div class="page-break-after"></div>
 			<link rel="prefetch" href="resume.html" type="text/html" class="demand" />
+		</main>
+		<main class="page" id="invoice">
+			<link rel="prefetch" href="invoice.html" type="text/html" class="demand" />
 		</main>
 		<main class="page" id="credits">
 			<link rel="prefetch" href="credits.html" type="text/html" class="demand" />
@@ -121,6 +125,7 @@
 					} else {
 						document.body.className += ' kf1';
 					}
+          window.invoiceCheckHashForManualRouting();
 				}, false);
 			})();
 		</script>
@@ -235,6 +240,14 @@
         };
         window.DemandJSDemanded = new DemandJS(djsOptions);
       })();
+      
+      window.invoiceCheckHashForManualRouting = function () {
+        const val = window.location.hash;
+        const ele = document.getElementById('invoice_target');
+        ele.checked = val.startsWith('#invoice');
+      }
+       window.invoiceCheckHashForManualRouting();
+      
     </script>
     <link rel="prefetch" href="analytics.html" type="text/html" class="demand" />
   </body>

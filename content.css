@@ -74,6 +74,12 @@ main {
   font-family: 'Anonymous Pro', monospace;
   flex-grow: 1;
 }
+.state {
+  position:absolute:
+  width:0px;
+  height:0px;
+  visibility:hidden;
+}
 /*
 main:after {
     clear: both;
@@ -83,6 +89,14 @@ main:after {
     display: block;
 }
 */
+input#invoice_target:checked ~ main:target:not(.dummy.dummy.dummy),
+input#invoice_target:checked ~ main:last-of-type:not(.dummy.dummy.dummy)
+{
+  max-height:0;
+  max-width:0;
+  padding:0;
+  margin:0;
+}
 main:target ~ main:last-of-type,
 main {
   max-height:0;
@@ -96,6 +110,7 @@ body {
   display: flex;
   flex-direction: row-reverse;
 }
+input#invoice_target:checked ~ main#invoice,
 main:target,
 body > main:last-of-type {
 	max-height:10000px;
