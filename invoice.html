@@ -60,11 +60,11 @@
 			.invoice_ispaid_container {
 				text-align: center;
 			}
+			#invoice_ispaid:checked ~ .invoice_ispaid_container #invoice_ispaid_false,
 			#invoice_ispaid:not(:checked) ~ .invoice_ispaid_container #invoice_ispaid_true {
 				display: none;
 			}
-			#invoice_ispaid:checked ~ .invoice_send div:has(#invoice_dueDate),
-			#invoice_ispaid:checked ~ .invoice_ispaid_container #invoice_ispaid_false {
+      #invoice_ispaid:checked ~ .invoice_send div:has(#invoice_dueDate) {
 				display: none;
 			}
 			#invoice_ispaid_false,
