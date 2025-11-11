@@ -94,8 +94,15 @@ input#hamburger_close:checked ~ div.menu div.hamburger {
 	div.menu {
 	}
 }
+@media (max-width: 480px) {
+  input#hamburger_open:checked ~ div.menu div.hamburger,
+  input#hamburger_close:checked ~ div.hamburger {
+    max-width: 24px !important;
+    max-height: 24px !important;
+  }
+}
 @media (max-width: 48em) {
-  div.hamburger {
+   div.hamburger {
     opacity: 1;
 		transition: opacity 0.75s ease-in;
     max-width: 32px;
@@ -114,7 +121,7 @@ input#hamburger_close:checked ~ div.menu div.hamburger {
   body > input#hamburger_close:checked ~ main:last-of-type {
   }
   input#hamburger_close:checked ~ div.hamburger {
-    margin-right: 36px;
+    margin-right: 6px;
     /* this transition leads to a little wierd bounce at the end that we all:
      * could fix with a better keyframe or timing function */
     transition: margin-right 0.7s step-end;
