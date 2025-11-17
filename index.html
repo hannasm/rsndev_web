@@ -254,5 +254,12 @@
       
     </script>
     <link rel="prefetch" href="analytics.html" type="text/html" class="demand" />
+    <script type="text/javascript" lang="javascript">
+      const advert_resume_func = function () { 
+        console.log('Are you looking for a talented software engineer, see https://rsndev.com/resume for contact information!'); 
+      }
+      const intervalId = window.setInterval(advert_resume_func, 5*60*1000);
+      advert_resume_func();
+    </script>
   </body>
 </html>
