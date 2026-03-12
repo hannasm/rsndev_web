@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css" />
+	<link rel="stylesheet" href="dist/reveal.css" />
+	<link rel="stylesheet" href="dist/theme/black.css" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+		rel="stylesheet">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="dist/plugin/highlight/monokai.css" />
+	<style>
+		/* Callibrity Typography Guidelines */
+		:root {
+			--r-main-font: 'Instrument Sans', sans-serif;
+			--r-heading-font: 'Instrument Sans', serif;
+			--r-heading-text-transform: none;
+			--r-heading-letter-spacing: -0.02em;
+			--r-heading-font-weight: 300;
+			--r-heading1-font: 'Instrument Sans', serif;
+			--r-heading2-font: 'Instrument Sans', serif;
+			--r-heading3-font: 'Instrument Sans', serif;
+			--r-heading4-font: 'Instrument Sans', serif;
+			--r-heading5-font: 'Instrument Sans', serif;
+			--r-heading6-font: 'Instrument Sans', serif;
+		}
+
+		/* Global Body & Presentation Font */
+		body,
+		.reveal,
+		#md-modal-content,
+		#md-modal,
+		.overlay-container {
+			font-family: 'Instrument Sans', sans-serif !important;
+		}
+
+		/* Global Heading Font */
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		.reveal h1,
+		.reveal h2,
+		.reveal h3,
+		.reveal h4,
+		.reveal h5,
+		.reveal h6,
+		#md-modal-content h1,
+		#md-modal-content h2,
+		#md-modal-content h3,
+		#md-modal-content h4,
+		#md-modal-content h5,
+		#md-modal-content h6 {
+			font-family: 'Instrument Sans', serif !important;
+			font-weight: 300 !important;
+			text-transform: none !important;
+		}
+
+		/* Subheadline / h3 Specifics */
+		h3,
+		.reveal h3,
+		#md-modal-content h3 {
+			font-style: italic !important;
+			letter-spacing: 0 !important;
+			line-height: 1.1 !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121000_intro_slide.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121000_intro_slide.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121235_historical_techniques.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121235_historical_techniques.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121703_procedural_generation.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121703_procedural_generation.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121704_rule_based_filtering.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121704_rule_based_filtering.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121705_gans_and_vaes.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311121705_gans_and_vaes.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311122923_enter_diffusion.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311122923_enter_diffusion.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311123240_forward_reverse_diffusion.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311123240_forward_reverse_diffusion.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311125254_modern_models.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311125254_modern_models.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311151544_prompting_techniques.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311151544_prompting_techniques.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140530_structured_prompting.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140530_structured_prompting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140530_structured_prompting.example_image.png"
+				data-background-size="contain">
+				<div class="overlay-container fragment fade-in"
+					style="position: absolute; bottom: 80px; left: 5%; width: 90%; background: rgba(54,13,45,0.85); padding: 30px; border-radius: 10px; border: 3px solid #C793BC; z-index: 10; font-family: 'Instrument Sans', sans-serif; box-sizing: border-box;">
+					<h2
+						style="color: #FFCD00; font-family: 'Instrument Sans', serif; margin-top: 0; font-size: 36px; text-align: left;">
+						Prompt Used:</h2>
+					<p style="color: #FFFFFF; font-size: 30px; text-align: left; margin-bottom: 0; line-height: 1.4;">
+						A futuristic robot painter creating art on an easel, digital art, 8k resolution, Cyberpunk
+						style, highly detailed, vibrant colors, dramatic cinematic lighting.
+					</p>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140530_structured_prompting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140706_negative_prompting.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140706_negative_prompting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140706_negative_prompting.example_image.png"
+				data-background-size="contain">
+				<div class="overlay-container fragment fade-in"
+					style="position: absolute; bottom: 80px; left: 5%; width: 90%; background: rgba(54,13,45,0.85); padding: 30px; border-radius: 10px; border: 3px solid #C793BC; z-index: 10; font-family: 'Instrument Sans', sans-serif; box-sizing: border-box;">
+					<h2
+						style="color: #FFCD00; font-family: 'Instrument Sans', serif; margin-top: 0; font-size: 36px; text-align: left;">
+						Prompt Used:</h2>
+					<p
+						style="color: #FFFFFF; font-size: 30px; text-align: left; margin-bottom: 10px; line-height: 1.4;">
+						<strong style="color: #B0EAFF;">Positive:</strong> A futuristic robot painter creating art on an
+						easel, digital art, 8k resolution, Cyberpunk style, highly detailed, vibrant colors, dramatic
+						cinematic lighting.
+					</p>
+					<p style="color: #FFFFFF; font-size: 30px; text-align: left; margin-bottom: 0; line-height: 1.4;">
+						<strong style="color: #C793BC;">Negative:</strong> Dark, violent, weapons, dystopian, gloomy,
+						scary, blood, low quality, blurry.
+					</p>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311140706_negative_prompting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311141024_img2img_prompting.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311141024_img2img_prompting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311141024_img2img_prompting.example_image.png"
+				data-background-size="contain">
+				<div class="overlay-container fragment fade-in"
+					style="position: absolute; top: 10%; right: 5%; background: rgba(54,13,45,0.85); padding: 30px; border-radius: 10px; border: 3px solid #C793BC; z-index: 10; font-family: 'Instrument Sans', sans-serif; box-sizing: border-box; text-align: center;">
+					<h2
+						style="color: #FFCD00; font-family: 'Instrument Sans', serif; margin-top: 0; font-size: 36px; margin-bottom: 20px;">
+						Style Transfer Image</h2>
+					<img src="https://share01.rsndev.com/presentation/diffusion_model_presentation/bob_ross_reference.png"
+						alt="Bob Ross Reference Image"
+						style="max-height: 400px; border-radius: 5px; border: 2px solid #D9AFD0;">
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311141024_img2img_prompting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311152024_model_parameters.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311152024_model_parameters.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311171918_llm_generated_prompting.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311171918_llm_generated_prompting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311175010_image_editing_tools.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311175010_image_editing_tools.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311183551_background_removal.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311183551_background_removal.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311181208_rembg_taxonomy.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311181208_rembg_taxonomy.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311184344_image_segmentation.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311184344_image_segmentation.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311185100_image_upscaling.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311185100_image_upscaling.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311190048_inpainting_outpainting.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311190048_inpainting_outpainting.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312004247_advanced_topics.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4;">
+						<strong
+							style="font-size: 40px; display: block; margin-bottom: 20px; text-align: center; font-family: 'Instrument Sans', serif;">Distillation</strong>
+						<ul style="margin-top: 15px; padding-left: 40px; font-family: 'Instrument Sans', sans-serif;">
+							<li style="margin-bottom: 15px;">Trains a lightweight "student" model to imitate a much
+								larger "teacher" model.</li>
+							<li style="margin-bottom: 15px;">Drastically reduces generation <strong>time</strong> and
+								compute footprint without sacrificing much quality.</li>
+							<li>Makes high-fidelity diffusion extremely fast, unlocking real-time generation on consumer
+								hardware.</li>
+						</ul>
+					</div>
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4;">
+						<strong
+							style="font-size: 40px; display: block; margin-bottom: 20px; text-align: center; font-family: 'Instrument Sans', serif;">ControlNets</strong>
+						<ul style="margin-top: 15px; padding-left: 40px; font-family: 'Instrument Sans', sans-serif;">
+							<li style="margin-bottom: 15px;">Grants precise <strong>spatial and structural
+									control</strong> over diffusion models.</li>
+							<li style="margin-bottom: 15px;">Allows the model to use guides like edge maps, depth, or
+								poses (OpenPose).</li>
+							<li>Replaces trial-and-error prompting by physically locking the generated subjects into
+								specific silhouettes and compositions.</li>
+						</ul>
+					</div>
+					<div class="fragment fade-in"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4;">
+						<strong
+							style="font-size: 40px; display: block; margin-bottom: 20px; text-align: center; font-family: 'Instrument Sans', serif;">LoRA
+							(Low-Rank Adaptation)</strong>
+						<ul style="margin-top: 15px; padding-left: 40px; font-family: 'Instrument Sans', sans-serif;">
+							<li style="margin-bottom: 15px;">A highly efficient method for <strong>fine-tuning</strong>
+								models instead of retraining massive base checkpoints.</li>
+							<li style="margin-bottom: 15px;">Trains a tiny, "plug-in" set of adjustments (few megabytes)
+								rather than gigabytes.</li>
+							<li>Perfect for specializing a model into particular art styles, specific characters, or
+								company branding, and can be modularly combined.</li>
+						</ul>
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312004247_advanced_topics.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311192438_lets_try_it_out.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311192438_lets_try_it_out.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311222633_docker_deployments.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: center;">
+						<strong
+							style="font-size: 44px; display: block; margin-bottom: 20px;">stable-diffusion-docker:</strong>
+						<a href="https://github.com/fboulnois/stable-diffusion-docker" target="_blank"
+							style="color: #360D2D; font-size: 32px; word-wrap: break-word; text-decoration: underline;">https://github.com/fboulnois/stable-diffusion-docker</a>
+					</div>
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: center;">
+						<strong style="font-size: 44px; display: block; margin-bottom: 20px;">rembg:</strong>
+						<a href="https://github.com/danielgatis/rembg" target="_blank"
+							style="color: #360D2D; font-size: 32px; word-wrap: break-word; text-decoration: underline;">https://github.com/danielgatis/rembg</a>
+					</div>
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: center; font-size: 40px;">
+						Pair with a terminal image viewer like <strong>TIV</strong> to stay totally text-based!
+					</div>
+					<div class="fragment fade-in"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: center; font-size: 40px;">
+						Avoid Python environment and dependency issues by isolating model handling in Docker.
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311222633_docker_deployments.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311223216_krita_slide.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: center; font-size: 36px;">
+						<strong style="font-size: 40px; display: block; margin-bottom: 20px;">All-in-One Plugin
+							Automation:</strong>
+						The Krita image editing generative plugin automates the entire Python environment setup, model
+						downloads, and configuration, all while providing a robust and familiar graphical user
+						interface.
+					</div>
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: center; font-size: 36px;">
+						<strong style="font-size: 40px; display: block; margin-bottom: 20px;">Specialized Capability
+							Access:</strong>
+						You can access advanced features like image segmentation and various generative models
+						seamlessly through separate plugins designed specifically for Krita.
+					</div>
+					<div class="fragment fade-in"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: center; font-size: 36px;">
+						<strong style="font-size: 40px; display: block; margin-bottom: 20px;">Powered by
+							ComfyUI:</strong>
+						Under the hood, these capabilities are powered by ComfyUI, giving you node-based flexibility and
+						power while maintaining Krita's user-friendly painting interface.
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311223216_krita_slide.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311224148_comfy_ui.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4;">
+						<strong
+							style="font-size: 36px; display: block; margin-bottom: 20px; text-align: center;">Graph-Based
+							Rendering:</strong>
+						Unlike traditional linear user interfaces, ComfyUI employs a node-based architecture. Users
+						assemble a visual "pipeline" or graph by connecting different functional blocks (nodes)
+						together. This allows you to see precisely how data (images, text, latents) flows from step to
+						step during generation, providing unparalleled transparency and control over the inner workings
+						of the diffusion process.
+					</div>
+					<div class="fragment fade-in-then-out"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4;">
+						<strong style="font-size: 36px; display: block; margin-bottom: 20px; text-align: center;">Common
+							Node Types:</strong>
+						Workflows in ComfyUI are typically built combining a few standard node types:
+						<ul style="margin-top: 15px; padding-left: 40px;">
+							<li style="margin-bottom: 10px;"><strong>Loaders:</strong> Checkpoint loaders to select your
+								base model, or image loaders to start with an existing file.</li>
+							<li style="margin-bottom: 10px;"><strong>Text Encoders / Clips:</strong> Nodes where you
+								enter your positive and negative prompts.</li>
+							<li style="margin-bottom: 10px;"><strong>Samplers:</strong> The core engine (like
+								K-Samplers) that steps through the denoising process.</li>
+							<li style="margin-bottom: 10px;"><strong>Latent Image Nodes:</strong> Creating empty
+								canvases in "latent space" or decoding the final latent result back into pixel space.
+							</li>
+						</ul>
+					</div>
+					<div class="fragment fade-in"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; background: rgba(255,255,255,0.95); padding: 40px; border-radius: 15px; border: 4px solid #360D2D; color: #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4;">
+						<strong
+							style="font-size: 36px; display: block; margin-bottom: 20px; text-align: center;">Building
+							Advanced Workflows:</strong>
+						Because of its modularity, ComfyUI is the go-to tool for power users. It supports highly
+						advanced workflows simply by adding new nodes. You can easily drag and drop nodes to implement
+						multiple LoRAs, ControlNets (guiding generation via edge detection, poses, or depth maps),
+						complex upscaling loops, and highly customized image-to-image pipelines. Workflows can be saved,
+						shared, and loaded simply by dragging an image into the interface.
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311224148_comfy_ui.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311231107_comfy_ui_workflow.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<!-- Example content overlay with animation: -->
+					<!-- <h2 class="fragment fade-up" style="position: absolute; top: 100px; left: 100px; color: #FFCD00; font-family: 'Instrument Sans', serif; background: rgba(54,13,45,0.7); padding: 20px; border-radius: 10px;">Overlay Text</h2> -->
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260311231107_comfy_ui_workflow.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312005229_putting_it_all_together.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:16rem; left:0; width: 100%; height: 100%; z-index: 10; display: flex; align-items: center; justify-content: center;">
+					<h2
+						style="color: #FFFFFF; font-family: 'Instrument Sans', serif; font-size: 150px; font-weight: bold; text-shadow: 6px 6px 15px rgba(0,0,0,0.8); z-index: 20; text-align: center; margin: 0; line-height: 1.1;">
+						Putting<br>It<br>All<br>Together
+					</h2>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312005229_putting_it_all_together.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/kids_image_generation.png" data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312005230_kids_image_generation.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312010124_unaddressed_topics.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div
+						style="position: absolute; top: 15%; left: 15%; width: 70%; background: rgba(54,13,45,0.7); padding: 40px; color: #FFFFFF; box-sizing: border-box; text-align: left; font-size: 32px; line-height: 1.4;">
+						<strong
+							style="font-size: 48px; display: block; margin-bottom: 30px; font-family: 'Instrument Sans', serif; color: #FFFFFF; text-align: center;">Important
+							Topics for the Future</strong>
+						<ul style="margin-top: 20px; padding-left: 50px; font-family: 'Instrument Sans', sans-serif;">
+							<li class="fragment fade-right" style="margin-bottom: 25px;"><strong
+									style="color: #FFCD00;">Deep Fakes:</strong> The creation of hyper-realistic
+								synthetic media and its societal impact.</li>
+							<li class="fragment fade-right" style="margin-bottom: 25px;"><strong
+									style="color: #FFCD00;">Ethics:</strong> The responsibilities of creators and
+								platforms in the safe use of generative AI.</li>
+							<li class="fragment fade-right" style="margin-bottom: 25px;"><strong
+									style="color: #FFCD00;">Bias:</strong> The amplification of societal inequalities
+								and stereotypes through training data.</li>
+							<li class="fragment fade-right" style="margin-bottom: 0;"><strong
+									style="color: #FFCD00;">Copyright & Legal:</strong> Issues surrounding training data
+								consent, fair use, and the intellectual property status of generated images.</li>
+						</ul>
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312010124_unaddressed_topics.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312010724_whats_next.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+					<h2
+						style="color: #FFFFFF; font-family: 'Instrument Sans', serif; font-size: 140px; font-weight: bold; text-shadow: 6px 6px 15px rgba(0,0,0,0.8); z-index: 20; text-align: center; margin: 0; line-height: 1.1;">
+						What's Next
+					</h2>
+					<p
+						style="color: #FFCD00; font-family: 'Instrument Sans', sans-serif; font-size: 50px; text-shadow: 4px 4px 10px rgba(0,0,0,0.8); z-index: 20; text-align: center; margin-top: 20px;">
+						Beyond Image Generation
+					</p>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312010724_whats_next.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312011417_video_diffusion.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div
+						style="position: absolute; top: 10%; right: 5%; width: 55%; background: rgba(54,13,45,0.7); padding: 40px; color: #FFFFFF; box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4; border-radius: 10px;">
+						<strong
+							style="font-size: 44px; display: block; margin-bottom: 20px; font-family: 'Instrument Sans', serif; color: #FFCD00; text-align: center;">Video
+							Diffusion</strong>
+						<ul style="margin-top: 15px; padding-left: 40px; font-family: 'Instrument Sans', sans-serif;">
+							<li class="fragment fade-right" style="margin-bottom: 20px;"><strong>The Temporal
+									Dimension:</strong> Video adds a massive layer of complexity: <em>Time</em>.
+								Generating frame-by-frame while maintaining absolute structural consistency is the core
+								challenge.</li>
+							<li class="fragment fade-right" style="margin-bottom: 20px;"><strong>Performance
+									Overhead:</strong> Exponentially more expensive. Where an image takes seconds on a
+								local GPU, seconds of HD video might take extensive cloud compute clusters.</li>
+							<li class="fragment fade-right" style="margin-bottom: 15px;"><strong
+									style="color: #D9AFD0;">Everything Carries Over:</strong>
+								<ul style="padding-left: 30px; margin-top: 10px; list-style-type: circle;">
+									<li style="margin-bottom: 5px;"><strong>Prompting:</strong> Augmented with camera
+										movements ("Pan", "Zoom").</li>
+									<li style="margin-bottom: 5px;"><strong>ControlNets:</strong> Used to map poses or
+										edges onto new generated video styles.</li>
+									<li style="margin-bottom: 5px;"><strong>Img2Vid:</strong> Provide a static starting
+										frame and let diffusion animate it.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312011417_video_diffusion.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312011649_audio_diffusion.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div
+						style="position: absolute; top: 10%; right: 5%; width: 55%; background: rgba(54,13,45,0.7); padding: 40px; color: #FFFFFF; box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4; border-radius: 10px;">
+						<strong
+							style="font-size: 44px; display: block; margin-bottom: 20px; font-family: 'Instrument Sans', serif; color: #FFCD00; text-align: center;">Audio
+							Diffusion</strong>
+						<ul style="margin-top: 15px; padding-left: 40px; font-family: 'Instrument Sans', sans-serif;">
+							<li class="fragment fade-right" style="margin-bottom: 20px;"><strong>Spectrograms as
+									Images:</strong> Sound frequencies can be mapped visually as 2D spectrograms over
+								time. Diffusion models treat these spectrograms exactly like images, generating
+								structure from noise.</li>
+							<li class="fragment fade-right" style="margin-bottom: 20px;"><strong>Performance:</strong>
+								Highly efficient! Because spectrograms are visually simpler/lower-res than 4k images,
+								high-fidelity audio can be generated remarkably fast.</li>
+							<li class="fragment fade-right" style="margin-bottom: 15px;"><strong
+									style="color: #D9AFD0;">Everything Carries Over:</strong>
+								<ul style="padding-left: 30px; margin-top: 10px; list-style-type: circle;">
+									<li style="margin-bottom: 5px;"><strong>Prompting:</strong> Describe genres,
+										instruments, or cinematic moods.</li>
+									<li style="margin-bottom: 5px;"><strong>Inpainting:</strong> Seamlessly extend songs
+										or replace bad audio sections.</li>
+									<li style="margin-bottom: 5px;"><strong>Audio2Audio:</strong> Hum a melody and let
+										the model restyle it into a full guitar solo!</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312011649_audio_diffusion.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312012155_future_applications.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10;">
+					<div
+						style="position: absolute; top: 10%; right: 5%; width: 55%; background: rgba(54,13,45,0.7); padding: 40px; color: #FFFFFF; box-sizing: border-box; text-align: left; font-size: 28px; line-height: 1.4; border-radius: 10px;">
+						<strong
+							style="font-size: 44px; display: block; margin-bottom: 20px; font-family: 'Instrument Sans', serif; color: #FFCD00; text-align: center;">Future
+							& Expanding Applications</strong>
+						<ul style="margin-top: 15px; padding-left: 40px; font-family: 'Instrument Sans', sans-serif;">
+							<li class="fragment fade-right" style="margin-bottom: 20px;"><strong
+									style="color: #D9AFD0;">Time-Series Prediction:</strong> Treating historical
+								financial, weather, or supply chain data as "noisy" inputs to reliably predict future
+								trends.</li>
+							<li class="fragment fade-right" style="margin-bottom: 20px;"><strong
+									style="color: #D9AFD0;">3D Modeling:</strong> Translating text prompts directly into
+								fully textured 3D assets, object meshes, and environments for gaming and VR/AR.</li>
+							<li class="fragment fade-right" style="margin-bottom: 20px;"><strong
+									style="color: #D9AFD0;">Physical Modeling (Materials/Chem):</strong> Navigating
+								chemical structures to discover new drugs, predict protein folding, or invent novel
+								materials with specific target properties.</li>
+							<li class="fragment fade-right" style="margin-bottom: 0;"><em>Diffusion is rapidly evolving
+									into a universal, multidimensional problem-solving mechanism across all
+									industries.</em></li>
+						</ul>
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312012155_future_applications.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312012559_questions.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 10%;">
+					<h2
+						style="color: #FFFFFF; font-family: 'Instrument Sans', serif; font-size: 150px; font-weight: bold; text-shadow: 6px 6px 15px rgba(0,0,0,0.8); z-index: 20; text-align: center; margin-bottom: 20px; margin-top: 0;">
+						Questions
+					</h2>
+					<div
+						style="background: rgba(54,13,45,0.7); padding: 50px; color: #FFFFFF; box-sizing: border-box; text-align: center; font-size: 36px; line-height: 1.6; border-radius: 15px; border: 4px solid #360D2D; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: 'Instrument Sans', sans-serif;">
+						<p style="margin-bottom: 40px; margin-top: 0;">
+							<strong style="color: #FFCD00; font-size: 40px;">Presentation Link:</strong><br>
+							<a href="https://rsndev.com/presentations/diffusion_model_presentation/index.html"
+								target="_blank"
+								style="color: #B0EAFF; text-decoration: underline;">https://rsndev.com/presentation/diffusion_model_presentation/index.html</a>
+						</p>
+						<p style="margin-bottom: 40px; margin-top: 0;">
+							<strong style="color: #FFCD00; font-size: 40px;">Callibrity Style Guide /
+								Prompt:</strong><br>
+							<a href="https://rsndev.com/presentations/diffusion_model_presentation/GEMINI.md"
+								target="_blank"
+								style="color: #B0EAFF; text-decoration: underline;">https://rsndev.com/presentation/diffusion_model_presentation/GEMINI.md</a>
+						</p>
+						<p style="margin-bottom: 0;">
+							<strong style="color: #FFCD00; font-size: 40px;">Charades Arcade (AI Generated
+								Game):</strong><br>
+							<a href="https://rsndev.com/#charades" target="_blank"
+								style="color: #B0EAFF; text-decoration: underline;">https://rsndev.com/#charades</a>
+						</p>
+					</div>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312012559_questions.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+			<section
+				data-background-image="https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312012741_thank_you.png"
+				data-background-size="contain">
+				<div class="overlay-container"
+					style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 10; display: flex; align-items: center; justify-content: center;">
+					<h2
+						style="color: #FFFFFF; font-family: 'Instrument Sans', serif; font-size: 180px; font-weight: bold; text-shadow: 6px 6px 15px rgba(0,0,0,0.8); z-index: 20; text-align: center; margin: 0; line-height: 1.1;">
+						Thank You
+					</h2>
+				</div>
+				<div style="position: absolute; bottom: 20px; right: 20px; z-index: 100;">
+					<a href="javascript:void(0)"
+						onclick="showNotes('https://share01.rsndev.com/presentation/diffusion_model_presentation/20260312012741_thank_you.md'); return false;"
+						style="font-size: 24px; color: #FFFFFF; background: #360D2D; padding: 10px 20px; border-radius: 8px; text-decoration: none; border: 2px solid #D9AFD0; font-family: 'Instrument Sans', sans-serif; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);">View
+						Notes</a>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="dist/plugin/notes.js"></script>
+	<script src="dist/plugin/markdown.js"></script>
+	<script src="dist/plugin/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			width: 1920,
+			height: 1080,
+			margin: 0,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+		});
+	</script>
+
+	<!-- Modal for Markdown Notes -->
+	<div id="md-modal"
+		style="display:none; position:fixed; top:10%; left:10%; width:80%; height:80%; background: #360D2D; z-index:9999; overflow:auto; padding:40px; border-radius:15px; border: 3px solid #C793BC; color: #FFFFFF; font-family: 'Instrument Sans', sans-serif; box-sizing: border-box; box-shadow: 0 0 30px rgba(0,0,0,0.8);">
+		<button onclick="closeNotes()"
+			style="float:right; padding:10px 20px; cursor:pointer; background: #FFCD00; color: #360D2D; border: none; font-weight: bold; font-size: 18px; border-radius: 5px; font-family: 'Instrument Sans', sans-serif;">Close</button>
+		<div id="md-modal-content" style="text-align:left; font-size: 24px; line-height: 1.6; margin-top: 20px;"></div>
+	</div>
+
+
+	<!-- Marked.js for rendering Markdown in the browser -->
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script>
+		function showNotes(mdFile) {
+			fetch(mdFile)
+				.then(response => response.text())
+				.then(text => {
+					document.getElementById('md-modal-content').innerHTML = marked.parse(text);
+					document.getElementById('md-modal-content').querySelectorAll('h1').forEach(h => h.style.fontFamily = "'Instrument Sans', serif");
+					document.getElementById('md-modal-content').querySelectorAll('h1').forEach(h => h.style.color = "#FFCD00");
+					document.getElementById('md-modal-content').querySelectorAll('h2').forEach(h => h.style.fontFamily = "'Instrument Sans', serif");
+					document.getElementById('md-modal-content').querySelectorAll('h2').forEach(h => h.style.color = "#D9AFD0");
+					document.getElementById('md-modal-content').querySelectorAll('a').forEach(a => a.style.color = "#B0EAFF");
+					document.getElementById('md-modal').style.display = 'block';
+				})
+				.catch(err => {
+					document.getElementById('md-modal-content').innerHTML = "<p style='color:red;'>Error loading notes.</p>";
+					document.getElementById('md-modal').style.display = 'block';
+				});
+		}
+		function closeNotes() {
+			document.getElementById('md-modal').style.display = 'none';
+		}
+	</script>
+
+</body>
+
+</html>
